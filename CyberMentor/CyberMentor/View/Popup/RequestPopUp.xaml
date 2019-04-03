@@ -14,22 +14,10 @@
     <StackLayout VerticalOptions="Center" Padding="20,0" HorizontalOptions="FillAndExpand">
         <Frame CornerRadius="20" Padding="0" x:Name="PopFrame">
             <StackLayout Padding="10" FlowDirection="RightToLeft">
-                <Label x:Name="LblTitle" TextColor="White" FontSize="Medium" HorizontalOptions="Center">
-                    <Label.FontFamily>
-                        <OnPlatform x:TypeArguments="x:String" Android="Cairo-Regular.ttf#Cairo Regular " iOS="Cairo-Regular" />
-                    </Label.FontFamily>
-                </Label>
+                <Label x:Name="LblTitle" TextColor="White" FontSize="Medium" HorizontalOptions="Center"/>
                 <StackLayout HorizontalOptions="Center">
-                    <Label x:Name="LblTxt" TextColor="White" FontSize="Micro" HorizontalOptions="Center">
-                        <Label.FontFamily>
-                            <OnPlatform x:TypeArguments="x:String" Android="Cairo-Regular.ttf#Cairo Regular " iOS="Cairo-Regular" />
-                        </Label.FontFamily>
-                    </Label>
-                    <Button Text="موافق" BackgroundColor="White" TextColor="DarkOrange" BorderRadius="50" Clicked="Button_Clicked">
-                        <Button.FontFamily>
-                            <OnPlatform x:TypeArguments="x:String" Android="Cairo-Regular.ttf#Cairo Regular " iOS="Cairo-Regular" />
-                        </Button.FontFamily>
-                    </Button>
+                    <Label x:Name="LblTxt" TextColor="White" FontSize="Micro" HorizontalOptions="Center"/>
+                    <Button Text="موافق" BackgroundColor="White" TextColor="DarkOrange" BorderRadius="50" Clicked="Button_Clicked"/>
                 </StackLayout>
             </StackLayout>
         </Frame>

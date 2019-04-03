@@ -1,5 +1,6 @@
 ﻿using CyberMentor.Helper;
 using CyberMentor.Service;
+using Plugin.Connectivity;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -56,24 +57,31 @@ namespace CyberMentor.View
         bool checker = false;
         private async void Loginbtn_Clicked(object sender, EventArgs e)
         {
-            if(AllFieldsFilled())
+            if(CrossConnectivity.Current.IsConnected)
             {
-                UserServices ser = new UserServices();
-                var user = await ser.UserLogin(EntryEmail.Text, EntryPassword.Text);
-                if(user==null)
+                if (AllFieldsFilled())
                 {
-                    Activ.IsRunning = false;
-                    await DisplayAlert("Error", "من فضلك تحقق من كلمة المرور", "OK");
-                    return;
+                    UserServices ser = new UserServices();
+                    var user = await ser.UserLogin(EntryEmail.Text, EntryPassword.Text);
+                    if (user == null)
+                    {
+                        Activ.IsRunning = false;
+                        await DisplayAlert("Error", "من فضلك تحقق من كلمة المرور", "OK");
+                        return;
+                    }
+                    else
+                    {
+                        checker = true;
+                        AppSettings.LastUsedID = user.id;
+                        PopAlert(checker);
+                        Activ.IsRunning = false;
+                        Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new MainPage());
+                    }
                 }
-                else
-                {
-                    checker = true;
-                    AppSettings.LastUsedID = user.id;
-                    //PopAlert(checker);
-                    Activ.IsRunning = false;
-                    App.Current.MainPage = new MainPage();
-                }
+            }
+            else
+            {
+                await DisplayAlert("Error", "من فضلك تحقق من الإتصال بالإنترنت", "OK");
             }
         }
 

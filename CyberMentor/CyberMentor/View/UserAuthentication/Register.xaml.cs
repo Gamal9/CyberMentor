@@ -68,7 +68,7 @@ namespace CyberMentor.View
                             checker = true;
                             PopAlert(checker);
                             Activ.IsRunning = false;
-                            Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new MainPage());
+                            Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new Login());
                         }
                     }
                 }

@@ -3,20 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 
-namespace CyberMentor
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace CyberMentor.View.MainMdPage
 {
-    public partial class MainPage : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class MenuPageDetail : ContentPage
     {
-        public MainPage()
+        public MenuPageDetail()
         {
             InitializeComponent();
-        }
-
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
-
         }
     }
 }
