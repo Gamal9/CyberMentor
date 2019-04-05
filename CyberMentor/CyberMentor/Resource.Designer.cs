@@ -250,6 +250,33 @@ namespace CyberMentor {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CyberEvents.
+        /// </summary>
+        internal static string CyberEvents {
+            get {
+                return ResourceManager.GetString("CyberEvents", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cyber News.
+        /// </summary>
+        internal static string CyberNews {
+            get {
+                return ResourceManager.GetString("CyberNews", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cyber Tube.
+        /// </summary>
+        internal static string CyberTube {
+            get {
+                return ResourceManager.GetString("CyberTube", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
         internal static string Delete {
@@ -624,6 +651,15 @@ namespace CyberMentor {
         internal static string Profile {
             get {
                 return ResourceManager.GetString("Profile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Protect Me.
+        /// </summary>
+        internal static string ProtectMe {
+            get {
+                return ResourceManager.GetString("ProtectMe", resourceCulture);
             }
         }
         

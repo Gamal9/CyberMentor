@@ -375,4 +375,16 @@
   <data name="YourLocation" xml:space="preserve">
     <value>موقعك على الخريطة</value>
   </data>
+  <data name="CyberEvents" xml:space="preserve">
+    <value>الأحداث و المؤتمرات</value>
+  </data>
+  <data name="CyberNews" xml:space="preserve">
+    <value>أخر الأخبار</value>
+  </data>
+  <data name="CyberTube" xml:space="preserve">
+    <value>Cyber Tube</value>
+  </data>
+  <data name="ProtectMe" xml:space="preserve">
+    <value>كيف أحمي نفسي من الإختراق</value>
+  </data>
 </root>

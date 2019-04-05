@@ -1,28 +1,77 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:CyberMentor" NavigationPage.HasNavigationBar="False"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:i18n="clr-namespace:CyberMentor.Helper"
+             xmlns:local="clr-namespace:CyberMentor" NavigationPage.HasNavigationBar="False" Title=""
              x:Class="CyberMentor.MainPage">
 
-    <Grid>
+    <Grid BackgroundColor="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="5*"/>
+            <RowDefinition Height="12*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0" Aspect="AspectFit" Source="menu.png" VerticalOptions="Center" Margin="5" HorizontalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Grid.Column="2" x:Name="LblLanguage" Margin="5" FontSize="Medium" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_5"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </Grid>
+        <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="3*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="5*"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
-                <Image Source="menu" Aspect="AspectFit" HorizontalOptions="Start" VerticalOptions="Center">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                    </Image.GestureRecognizers>
-                </Image>
+            <Image Grid.Row="0" Margin="20,0" HorizontalOptions="Fill" VerticalOptions="Fill" Source="houseTxt.png"/>
+            <Grid Grid.Row="1">
+                <ScrollView>
+                    <StackLayout>
+                        <Frame CornerRadius="20" HorizontalOptions="Fill" HeightRequest="50" Margin="5" BorderColor="Blue">
+                            <Grid>
+                                <Label HorizontalOptions="Center" FontSize="Large" VerticalOptions="Center" Text="{i18n:Translate ProtectMe}"/>
+                            </Grid>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                        <Frame CornerRadius="20" HorizontalOptions="Fill" HeightRequest="50" Margin="5" BorderColor="Blue">
+                            <Grid>
+                                <Label HorizontalOptions="Center" FontSize="Large" VerticalOptions="Center" Text="{i18n:Translate CyberNews}"/>
+                            </Grid>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                        <Frame CornerRadius="20" HorizontalOptions="Fill" HeightRequest="50" Margin="5" BorderColor="Blue">
+                            <Grid>
+                                <Label HorizontalOptions="Center" FontSize="Large" VerticalOptions="Center" Text="{i18n:Translate CyberEvents}"/>
+                            </Grid>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                        <Frame CornerRadius="20" HorizontalOptions="Fill" HeightRequest="50" Margin="5" BorderColor="Blue">
+                            <Grid>
+                                <Label HorizontalOptions="Center" FontSize="Large" VerticalOptions="Center" Text="{i18n:Translate CyberTube}"/>
+                            </Grid>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_4"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </StackLayout>
+
+
+                </ScrollView>
             </Grid>
-            <Image Grid.Row="1" Aspect="AspectFit" Margin="10,0" Source="houseTxt.png"/>
         </Grid>
     </Grid>
-
 </ContentPage>

@@ -1,4 +1,5 @@
 ﻿using CyberMentor.View;
+using CyberMentor.View.MainMdPage;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -11,8 +12,7 @@ namespace CyberMentor
         public App()
         {
             InitializeComponent();
-
-            MainPage = new Login();
+            MainPage = new CyberTube();
         }
 
         protected override void OnStart()

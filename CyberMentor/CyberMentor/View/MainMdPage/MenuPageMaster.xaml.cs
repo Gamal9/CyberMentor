@@ -21,8 +21,8 @@ namespace CyberMentor.View.MainMdPage
         {
             InitializeComponent();
 
-            BindingContext = new MenuPageMasterViewModel();
-            ListView = MenuItemsListView;
+            //BindingContext = new MenuPageMasterViewModel();
+            //ListView = MenuItemsListView;
         }
 
         class MenuPageMasterViewModel : INotifyPropertyChanged

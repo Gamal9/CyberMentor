@@ -372,4 +372,16 @@
   <data name="YourLocation" xml:space="preserve">
     <value>Your Location</value>
   </data>
+  <data name="CyberEvents" xml:space="preserve">
+    <value>CyberEvents</value>
+  </data>
+  <data name="CyberNews" xml:space="preserve">
+    <value>Cyber News</value>
+  </data>
+  <data name="CyberTube" xml:space="preserve">
+    <value>Cyber Tube</value>
+  </data>
+  <data name="ProtectMe" xml:space="preserve">
+    <value>Protect Me</value>
+  </data>
 </root>
