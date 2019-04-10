@@ -16,5 +16,10 @@ namespace CyberMentor.View
 		{
 			InitializeComponent ();
 		}
-	}
+
+        private void List_FlowItemTapped(object sender, ItemTappedEventArgs e)
+        {
+
+        }
+    }
 }

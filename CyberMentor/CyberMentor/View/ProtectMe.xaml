@@ -1,12 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" NavigationPage.HasNavigationBar="False"
              x:Class="CyberMentor.View.ProtectMe">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+    
+    <Grid BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="12*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0" Aspect="AspectFit" Source="menu.png" VerticalOptions="Center" Margin="5" HorizontalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Grid.Column="2" x:Name="LblLanguage" Margin="5" FontSize="Medium" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" Margin="20,0" HorizontalOptions="Fill" VerticalOptions="Fill" Source="houseTxt.png"/>
+            <Grid Grid.Row="1">
+                <ListView x:Name="list" HasUnevenRows="True" ItemSelected="List_ItemSelected" SelectionMode="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame CornerRadius="20" HorizontalOptions="Fill" HeightRequest="50" Margin="5" BorderColor="Blue">
+                                    <Grid>
+                                        <Image Source="{Binding logo, StringFormat='http://wassel.alsalil.net/users/images/{0:N}'}" Aspect="Fill"/>
+                                        <Label HorizontalOptions="Center" FontSize="Large" VerticalOptions="Center" Text="{Binding title}"/>
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </Grid>
+    </Grid>
+
 </ContentPage>

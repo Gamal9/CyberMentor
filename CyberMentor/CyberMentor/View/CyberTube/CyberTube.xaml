@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:CyberMentor.ViewModel"
+             xmlns:local="clr-namespace:CyberMentor.Model"
+             xmlns:controls="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             x:Class="CyberMentor.View.CyberTube">
+    <ContentPage.BindingContext>
+        <viewmodel:TubeViewModel/>
+    </ContentPage.BindingContext>
+    <!--<local:CustomWebView x:Name="webView" Source="https://www.youtube.com/embed/DHHY8m3rEzU" HeightRequest="220" VerticalOptions="Start" />-->
+    <StackLayout Padding="5,10" BackgroundColor="White">
+
+        <Label Text="Cyber Tube" TextColor="Black" FontSize="22"/>
+
+        <controls:FlowListView FlowColumnCount="1" RefreshCommand="{Binding RefreshCommand}" IsPullToRefreshEnabled="True" IsRefreshing="{Binding IsRunning}" FlowItemsSource="{Binding AllTubes}" FlowItemTapped="FlowListView_FlowItemTapped" HasUnevenRows="True" SelectionMode="None">
+            <controls:FlowListView.FlowColumnTemplate>
+                <DataTemplate>
+                    <StackLayout Orientation="Vertical" Padding="10,10,10,20">
+                        <Label Text="{Binding Youtube.ChannelTitle}" TextColor="Maroon" FontSize="22"/>
+                        <Label Text="{Binding Youtube.Title}" TextColor="Black" FontSize="16"/>
+                        <Image Source="{Binding Youtube.HighThumbnailUrl}" HeightRequest="200"/>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding Youtube.ViewCount, StringFormat='{0:N} views'}" TextColor="#0D47A1" FontSize="14"/>
+                            <Label Text="{Binding Youtube.LikeCount, StringFormat='{0:N} likes'}" TextColor="#2196F3" FontSize="14"/>
+                            <Label Text="{Binding Youtube.DislikeCount, StringFormat='{0:N} dislikes'}" TextColor="#0D47A1" FontSize="14"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" TranslationY="-7">
+                            <Label Text="{Binding Youtube.FavoriteCount, StringFormat='{0:N} favorites'}" TextColor="#2196F3" FontSize="14"/>
+                            <Label Text="{Binding Youtube.CommentCount, StringFormat='{0:N} comments'}" TextColor="#0D47A1" FontSize="14"/>
+                        </StackLayout>
+                        <Label Text="{Binding Youtube.Description,StringFormat='{0:N}.....إلخ'}" MaxLines="3" TextColor="Gray" FontSize="14"/>
+                    </StackLayout>
+
+                </DataTemplate>
+            </controls:FlowListView.FlowColumnTemplate>
+        </controls:FlowListView>
+    </StackLayout>
+</ContentPage>

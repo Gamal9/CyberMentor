@@ -17,7 +17,6 @@ namespace CyberMentor.View.MainMdPage
         public MenuPage()
         {
             InitializeComponent();
-            AppSettings.LastUserGravity = (AppSettings.LastUserGravity=="Arabic") ? "English" : "Arabic";
             CrossMultilingual.Current.CurrentCultureInfo = CrossMultilingual.Current.NeutralCultureInfoList.ToList().First(element => element.EnglishName.Contains(AppSettings.LastUserGravity));
             Resource.Culture = CrossMultilingual.Current.CurrentCultureInfo;
             //BindingContext = new MenuPageMasterViewModel();

@@ -10,16 +10,12 @@ using Xamarin.Forms.Xaml;
 namespace CyberMentor.View
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class CyberEvents : ContentPage
+	public partial class VideoPage : ContentPage
 	{
-		public CyberEvents ()
+		public VideoPage (string src)
 		{
 			InitializeComponent ();
-		}
-
-        private void List_FlowItemTapped(object sender, ItemTappedEventArgs e)
-        {
-
+            webView.Source = "https://www.youtube.com/embed/" + src;
         }
-    }
+	}
 }

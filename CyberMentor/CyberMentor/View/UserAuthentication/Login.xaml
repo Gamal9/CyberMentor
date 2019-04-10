@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" NavigationPage.HasNavigationBar="False"
              xmlns:i18n="clr-namespace:CyberMentor.Helper"
              x:Class="CyberMentor.View.Login">
 
@@ -22,9 +22,7 @@
             <StackLayout  Padding="20,0,20,0" Grid.Row="2" VerticalOptions="Center">
                 <!-- Place new controls here -->
                 <StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Image Source="house.png" Aspect="AspectFit" Opacity=".4"/>
-                    </StackLayout>
+                    
                     <StackLayout Orientation="Horizontal">
                         <Image Source="mail.png" Aspect="AspectFit" Opacity=".4"/>
                         <Entry x:Name="EntryEmail" Placeholder="{i18n:Translate Email}" PlaceholderColor="LightGray"  HorizontalOptions="FillAndExpand"/>

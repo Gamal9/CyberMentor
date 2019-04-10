@@ -1,5 +1,6 @@
 ﻿using CyberMentor.Helper;
 using CyberMentor.Service;
+using CyberMentor.View.MainMdPage;
 using Plugin.Connectivity;
 using Rg.Plugins.Popup.Services;
 using System;
@@ -75,7 +76,7 @@ namespace CyberMentor.View
                         AppSettings.LastUsedID = user.id;
                         PopAlert(checker);
                         Activ.IsRunning = false;
-                        Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new MainPage());
+                        Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new MenuPage());
                     }
                 }
             }

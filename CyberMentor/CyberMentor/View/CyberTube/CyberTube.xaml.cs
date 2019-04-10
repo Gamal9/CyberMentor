@@ -18,9 +18,10 @@ namespace CyberMentor.View
 			InitializeComponent ();
 		}
 
-        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private void FlowListView_FlowItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var item = e.SelectedItem as YoutubeItem;
+            var item = e.Item as CyberMentor.Model.CyberModel;
+            Navigation.PushModalAsync(new VideoPage(item.key));
         }
 
         //protected override void OnDisappearing()

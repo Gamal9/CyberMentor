@@ -1,9 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:i18n="clr-namespace:CyberMentor.Helper"
-             xmlns:local="clr-namespace:CyberMentor" NavigationPage.HasNavigationBar="False" Title=""
+             xmlns:local="clr-namespace:CyberMentor"
+             xmlns:viewmodel="clr-namespace:CyberMentor.ViewModel"
+             xmlns:controls="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView" NavigationPage.HasNavigationBar="False" Title=""
              x:Class="CyberMentor.MainPage">
-
+    <ContentPage.BindingContext>
+        <viewmodel:MainPageViewModel/>
+    </ContentPage.BindingContext>
+    
+    
     <Grid BackgroundColor="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -33,44 +39,23 @@
             </Grid.RowDefinitions>
             <Image Grid.Row="0" Margin="20,0" HorizontalOptions="Fill" VerticalOptions="Fill" Source="houseTxt.png"/>
             <Grid Grid.Row="1">
-                <ScrollView>
-                    <StackLayout>
-                        <Frame CornerRadius="20" HorizontalOptions="Fill" HeightRequest="50" Margin="5" BorderColor="Blue">
-                            <Grid>
-                                <Label HorizontalOptions="Center" FontSize="Large" VerticalOptions="Center" Text="{i18n:Translate ProtectMe}"/>
-                            </Grid>
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
-                            </Frame.GestureRecognizers>
-                        </Frame>
-                        <Frame CornerRadius="20" HorizontalOptions="Fill" HeightRequest="50" Margin="5" BorderColor="Blue">
-                            <Grid>
-                                <Label HorizontalOptions="Center" FontSize="Large" VerticalOptions="Center" Text="{i18n:Translate CyberNews}"/>
-                            </Grid>
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"/>
-                            </Frame.GestureRecognizers>
-                        </Frame>
-                        <Frame CornerRadius="20" HorizontalOptions="Fill" HeightRequest="50" Margin="5" BorderColor="Blue">
-                            <Grid>
-                                <Label HorizontalOptions="Center" FontSize="Large" VerticalOptions="Center" Text="{i18n:Translate CyberEvents}"/>
-                            </Grid>
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3"/>
-                            </Frame.GestureRecognizers>
-                        </Frame>
-                        <Frame CornerRadius="20" HorizontalOptions="Fill" HeightRequest="50" Margin="5" BorderColor="Blue">
-                            <Grid>
-                                <Label HorizontalOptions="Center" FontSize="Large" VerticalOptions="Center" Text="{i18n:Translate CyberTube}"/>
-                            </Grid>
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_4"/>
-                            </Frame.GestureRecognizers>
-                        </Frame>
-                    </StackLayout>
-
-
-                </ScrollView>
+                <controls:FlowListView IsVisible="{Binding DataVisable}" FlowItemsSource="{Binding Categories}" FlowColumnCount="1" HasUnevenRows="True" RefreshCommand="{Binding RefreshCommand}" FlowItemTapped="FlowListView_FlowItemTapped" SeparatorColor="White" IsPullToRefreshEnabled="True" SelectionMode="None" IsRefreshing="{Binding IsRunning}">
+                    <controls:FlowListView.FlowColumnTemplate>
+                        <DataTemplate>
+                            <Frame CornerRadius="20" HorizontalOptions="Fill" HeightRequest="50" Margin="5" BorderColor="Blue">
+                                <Grid>
+                                    <Image Source="{Binding logo, StringFormat='http://wassel.alsalil.net/users/images/{0:N}'}" Aspect="Fill"/>
+                                    <Label HorizontalOptions="Center" FontSize="Large" VerticalOptions="Center" Text="{Binding name}"/>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </controls:FlowListView.FlowColumnTemplate>
+                </controls:FlowListView>
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center" IsVisible="{Binding Visable}">
+                    <Label FontSize="Large" Text="{i18n:Translate ErrorMessage}"/>
+                    <Button HorizontalOptions="Center" Clicked="Button_Clicked" Text="{i18n:Translate TryAgain}"/>
+                </StackLayout>
+                
             </Grid>
         </Grid>
     </Grid>
