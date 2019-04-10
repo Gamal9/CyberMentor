@@ -13,7 +13,7 @@ namespace CyberMentor
         public App()
         {
             InitializeComponent();
-            MainPage = (AppSettings.LastUsedID != 0)? new NavigationPage(new MenuPage()) : new NavigationPage(new Login());
+            MainPage = new NavigationPage(new Login());
         }
 
         protected override void OnStart()

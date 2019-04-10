@@ -11,15 +11,15 @@ namespace CyberMentor.Service
 {
     public class TubeServices
     {
-        public async Task<ObservableCollection<CyberNews>> GetAllNews()
+        public async Task<ObservableCollection<CyberNewsModel>> GetAllNews()
         {
             var httpClient = new HttpClient();
-            ObservableCollection<CyberNews> news = new ObservableCollection<CyberNews>();
+            ObservableCollection<CyberNewsModel> news = new ObservableCollection<CyberNewsModel>();
             var json = await httpClient.GetStringAsync("https://cyber.alsalil.net/api/getcyber_news");
             try
             {
-                var response = JsonConvert.DeserializeObject<Response<string, ResponseData<ObservableCollection<CyberNews>>>>(json);
-                news = new ObservableCollection<CyberNews>(response.message.data);
+                var response = JsonConvert.DeserializeObject<Response<string, ResponseData<ObservableCollection<CyberNewsModel>>>>(json);
+                news = new ObservableCollection<CyberNewsModel>(response.message.data);
             }
             catch (Exception exception)
             {
@@ -45,15 +45,15 @@ namespace CyberMentor.Service
             return news;
         }
 
-        public async Task<ObservableCollection<CyberNews>> GetAllEvents()
+        public async Task<ObservableCollection<CyberNewsModel>> GetAllEvents()
         {
             var httpClient = new HttpClient();
-            var Events = new ObservableCollection<CyberNews>();
+            var Events = new ObservableCollection<CyberNewsModel>();
             var json = await httpClient.GetStringAsync("https://cyber.alsalil.net/api/getcyber_event");
             try
             {
-                var response = JsonConvert.DeserializeObject<Response<string, ResponseData<ObservableCollection<CyberNews>>>>(json);
-                Events = new ObservableCollection<CyberNews>(response.message.data);
+                var response = JsonConvert.DeserializeObject<Response<string, ResponseData<ObservableCollection<CyberNewsModel>>>>(json);
+                Events = new ObservableCollection<CyberNewsModel>(response.message.data);
             }
             catch (Exception exception)
             {
@@ -81,15 +81,18 @@ namespace CyberMentor.Service
             return Cats;
         }
 
-        public async Task<ObservableCollection<ProtectMeModel>> AllSubItemsPage()
+        public async Task<ObservableCollection<CyberNewsModel>> AllSubItemsPage(int id)
         {
             var httpClient = new HttpClient();
-            var Cats = new ObservableCollection<ProtectMeModel>();
-            var json = await httpClient.GetStringAsync("https://cyber.alsalil.net/api/postprotectme");
+            Dictionary<string, int> values = new Dictionary<string, int>();
+            values.Add("subcat_id", id);
+            string content = JsonConvert.SerializeObject(values);
+            var Cats = new ObservableCollection<CyberNewsModel>();
+            var json = await httpClient.PostAsync("https://cyber.alsalil.net/api/postprotectme",new StringContent(content, Encoding.UTF8, "text/json"));
             try
             {
-                var response = JsonConvert.DeserializeObject<Response<string, ObservableCollection<ProtectMeModel>>>(json);
-                Cats = new ObservableCollection<ProtectMeModel>(response.message);
+                var response = JsonConvert.DeserializeObject<Response<string,ResponseData<ObservableCollection<CyberNewsModel>>>>(json.Content.ReadAsStringAsync().Result.ToString());
+                Cats = new ObservableCollection<CyberNewsModel>(response.message.data);
             }
             catch (Exception exception)
             {

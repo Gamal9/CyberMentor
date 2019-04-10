@@ -20,9 +20,20 @@ namespace CyberMentor.View
             list.FlowItemsSource = cats;
 		}
 
-        private void List_FlowItemTapped(object sender, ItemTappedEventArgs e)
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
+            (App.Current.MainPage as MasterDetailPage).IsPresented = true;
+        }
 
+        private void List_FlowItemTapped_1(object sender, ItemTappedEventArgs e)
+        {
+            var item = e.Item as SubCatModel;
+            Navigation.PushAsync(new ProtectMe(item.id));
+        }
+
+        private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
+        {
+            Navigation.PopAsync();
         }
     }
 }

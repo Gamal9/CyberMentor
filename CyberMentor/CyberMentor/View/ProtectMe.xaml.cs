@@ -1,4 +1,7 @@
 ﻿using CyberMentor.Model;
+using CyberMentor.Service;
+using CyberMentor.View.Popup;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,26 +16,40 @@ namespace CyberMentor.View
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ProtectMe : ContentPage
 	{
-		public ProtectMe (List<object> subs)
+        int ID;
+		public ProtectMe (int id)
 		{
 			InitializeComponent ();
-            list.ItemsSource = subs;
+            ID = id;
+            DataGetter();
 		}
 
-        private void List_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void DataGetter()
         {
-            var item = e.SelectedItem as SubCatModel;
-            Navigation.PushAsync(new SubItemsPage(item.id));
+            Activ.IsRunning = true;
+            TubeServices ser = new TubeServices();
+            var items = await ser.AllSubItemsPage(ID);
+            if(items.Count!=0)
+            {
+                list.FlowItemsSource = items;
+            }
+            Activ.IsRunning = false;
+        }
+
+        private void List_FlowItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var item = e.Item as CyberNewsModel;
+            PopupNavigation.Instance.PushAsync(new LinkPage(item.link));
         }
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            (App.Current.MainPage as MasterDetailPage).IsPresented = true; 
+            (App.Current.MainPage as MasterDetailPage).IsPresented = true;
         }
 
         private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
         {
-
+            Navigation.PopAsync();
         }
     }
 }

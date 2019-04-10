@@ -37,9 +37,9 @@ namespace CyberMentor.ViewModel
             set { _pageDirection = value; }
         }
 
-        private ObservableCollection<CyberNews> _events;
+        private ObservableCollection<CyberNewsModel> _events;
 
-        public ObservableCollection<CyberNews> Events
+        public ObservableCollection<CyberNewsModel> Events
         {
             get { return _events; }
             set { _events = value; OnPropertyChanged(); }

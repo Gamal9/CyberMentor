@@ -1,29 +1,54 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" NavigationPage.HasNavigationBar="False"
              xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              x:Class="CyberMentor.View.SubCategories">
 
-    <flv:FlowListView x:Name="list" SelectionMode="None" RowHeight="200" FlowUseAbsoluteLayoutInternally="True" FlowColumnExpand="Proportional" FlowColumnCount="2" SeparatorVisibility="None" HasUnevenRows="False" BackgroundColor="White" FlowItemTapped="List_FlowItemTapped">
-        <flv:FlowListView.FlowColumnTemplate>
-            <DataTemplate>
-                <Grid>
-                    <Image Source="{Binding img}" VerticalOptions="Fill" HorizontalOptions="Fill" Aspect="Fill"/>
-                    <Grid Margin="5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="2*"/>
-                        </Grid.ColumnDefinitions>
-                        <StackLayout Grid.Column="1" VerticalOptions="Start" >
-                            <Label Grid.Column="1" Text="{Binding title}" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
-                            <Label Text="{Binding body}" FontSize="Small"/>
-                            <Label Text="{Binding more}" FontSize="Small"/>
-                        </StackLayout>
-                    </Grid>
-                </Grid>
-            </DataTemplate>
-        </flv:FlowListView.FlowColumnTemplate>
-    </flv:FlowListView>
-
+    <Grid BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="12*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0" Aspect="AspectFit" Source="menu.png" VerticalOptions="Center" Margin="5" HorizontalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Image Grid.Column="2" Source="leftarrow.png" x:Name="BackImg" VerticalOptions="Center" HorizontalOptions="Start">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" Margin="20,0" HorizontalOptions="Fill" VerticalOptions="Fill" Source="houseTxt.png"/>
+            <Grid Grid.Row="1">
+                <flv:FlowListView x:Name="list" SelectionMode="None" VerticalOptions="Center" SeparatorColor="White" FlowColumnCount="1" SeparatorVisibility="None" HasUnevenRows="True" BackgroundColor="White" FlowItemTapped="List_FlowItemTapped_1">
+                    <flv:FlowListView.FlowColumnTemplate>
+                        <DataTemplate>
+                            <Frame CornerRadius="20" HorizontalOptions="Fill" Margin="5" BorderColor="Blue">
+                                <Grid>
+                                    <Image Source="{Binding logo, StringFormat='http://wassel.alsalil.net/users/images/{0}'}" Aspect="Fill"/>
+                                    <Label HorizontalOptions="Center" FontSize="Large" VerticalOptions="Center" Text="{Binding title}"/>
+                                    <Label HorizontalOptions="Center" FontSize="Medium" VerticalOptions="Center" Text="{Binding body}"/>
+                                    <Label HorizontalOptions="Center" FontSize="Medium" VerticalOptions="Center" Text="{Binding more}"/>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </flv:FlowListView.FlowColumnTemplate>
+                </flv:FlowListView>
+            </Grid>
+        </Grid>
+    </Grid>
 
 </ContentPage>

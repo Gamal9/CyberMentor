@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CyberMentor.View.Popup;
+using Rg.Plugins.Popup.Services;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -51,6 +53,11 @@ namespace CyberMentor.View.MainMdPage
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
             #endregion
+        }
+
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PushAsync(new LogoutPopup());
         }
     }
 }

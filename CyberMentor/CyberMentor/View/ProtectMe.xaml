@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" NavigationPage.HasNavigationBar="False"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView" NavigationPage.HasNavigationBar="False"
              x:Class="CyberMentor.View.ProtectMe">
-    
+
     <Grid BackgroundColor="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -19,34 +20,55 @@
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                 </Image.GestureRecognizers>
             </Image>
-            <Label Grid.Column="2" x:Name="LblLanguage" Margin="5" FontSize="Medium" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center">
-                <Label.GestureRecognizers>
+            <Image Grid.Column="2" Source="leftarrow.png" x:Name="BackImg" VerticalOptions="Center" HorizontalOptions="Start">
+                <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
-                </Label.GestureRecognizers>
-            </Label>
+                </Image.GestureRecognizers>
+            </Image>
         </Grid>
-        <Grid Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="5*"/>
-            </Grid.RowDefinitions>
-            <Image Grid.Row="0" Margin="20,0" HorizontalOptions="Fill" VerticalOptions="Fill" Source="houseTxt.png"/>
-            <Grid Grid.Row="1">
-                <ListView x:Name="list" HasUnevenRows="True" ItemSelected="List_ItemSelected" SelectionMode="None">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Frame CornerRadius="20" HorizontalOptions="Fill" HeightRequest="50" Margin="5" BorderColor="Blue">
-                                    <Grid>
-                                        <Image Source="{Binding logo, StringFormat='http://wassel.alsalil.net/users/images/{0:N}'}" Aspect="Fill"/>
-                                        <Label HorizontalOptions="Center" FontSize="Large" VerticalOptions="Center" Text="{Binding title}"/>
-                                    </Grid>
-                                </Frame>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </Grid>
+        <Grid Padding="0" Grid.Row="1">
+            <flv:FlowListView x:Name="list" SeparatorVisibility="None" RefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsRunning}" IsPullToRefreshEnabled="True" BackgroundColor="Transparent" SeparatorColor="#DFDFDF" HasUnevenRows="false" RowHeight="180" FlowItemTapped="List_FlowItemTapped" FlowItemsSource="{Binding AllNews}"  FlowColumnCount="1" FlowColumnExpand="Proportional" >
+                <flv:FlowListView.FlowColumnTemplate>
+                    <DataTemplate>
+                        <RelativeLayout>
+                            <Image x:Name="ImgTitle" RelativeLayout.HeightConstraint="{ConstraintExpression 
+				Type=RelativeToParent,
+				Property=Height,
+				Factor=0.6}"
+			RelativeLayout.WidthConstraint="{ConstraintExpression
+				Type=RelativeToParent,
+				Property=Width,
+				Factor=1}" 
+               Aspect="AspectFill" Source="{Binding img,StringFormat='http://wassel.alsalil.net/users/images/{0:N}'}"/>
+                            <StackLayout Opacity="0.6" BackgroundColor="White" Margin="20,0,20,0"
+			RelativeLayout.WidthConstraint="{ConstraintExpression
+				Type=RelativeToParent,            
+				Property=Width,            
+				Factor=1}"		
+			RelativeLayout.YConstraint="{ConstraintExpression
+				Type=RelativeToView,    
+				ElementName=ImgTitle,
+				Property=Height,
+				Factor=1,
+				Constant=-10}">
+                                <Grid Padding="10" VerticalOptions="Center" HorizontalOptions="Center">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="2*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label  Grid.Row="0" Grid.Column="0" Text="{Binding title}" TextColor="Black" />
+                                    <Label  Grid.Row="1" Grid.ColumnSpan="2"  Text="{Binding body }" />
+                                </Grid>
+                            </StackLayout>
+                        </RelativeLayout>
+                    </DataTemplate>
+                </flv:FlowListView.FlowColumnTemplate>
+            </flv:FlowListView>
+            <ActivityIndicator x:Name="Activ" Color="Blue" VerticalOptions="Center" HorizontalOptions="Center"/>
         </Grid>
     </Grid>
 

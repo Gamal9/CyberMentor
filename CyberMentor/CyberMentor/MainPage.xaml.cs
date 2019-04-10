@@ -31,25 +31,6 @@ namespace CyberMentor
             (App.Current.MainPage as MasterDetailPage).IsPresented = true;
         }
 
-        private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
-        {
-            //Navigation.PushModalAsync(new ProtectMe());
-        }
-
-        private void TapGestureRecognizer_Tapped_2(object sender, EventArgs e)
-        {
-            //Navigation.PushModalAsync(new CyberNews());
-        }
-
-        private void TapGestureRecognizer_Tapped_3(object sender, EventArgs e)
-        {
-            //Navigation.PushModalAsync(new CyberEvents());
-        }
-
-        private void TapGestureRecognizer_Tapped_4(object sender, EventArgs e)
-        {
-            //Navigation.PushModalAsync(new CyberTube());
-        }
 
         private void TapGestureRecognizer_Tapped_5(object sender, EventArgs e)
         {

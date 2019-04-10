@@ -24,6 +24,16 @@ namespace CyberMentor.View
             Navigation.PushModalAsync(new VideoPage(item.key));
         }
 
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            (App.Current.MainPage as MasterDetailPage).IsPresented = true;
+        }
+
+        private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
+        {
+            Navigation.PopAsync();
+        }
+
         //protected override void OnDisappearing()
         //{
         //    webView.Pause();

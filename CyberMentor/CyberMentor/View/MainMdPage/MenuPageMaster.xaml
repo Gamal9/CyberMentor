@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:i18n="clr-namespace:CyberMentor.Helper"
              x:Class="CyberMentor.View.MainMdPage.MenuPageMaster" NavigationPage.HasNavigationBar="False"
              Title="Master">
 
@@ -13,7 +13,11 @@
             <Image Source="house.png" Aspect="AspectFit" />
         </Grid>
         <Grid Grid.Row="1">
-            
+            <Label Text="{i18n:Translate Logout}" HorizontalOptions="Center" VerticalOptions="End" Margin="5">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
         </Grid>
     </Grid>
 </ContentPage>

@@ -4,12 +4,13 @@ using System.Text;
 
 namespace CyberMentor.Model
 {
-    public class CyberNews
+    public class CyberNewsModel
     {
         public int id { get; set; }
         public string title { get; set; }
         public string body { get; set; }
         public string desc { get; set; }
+        public int section_id { get; set; }
         public string img { get; set; }
         public string more { get; set; }
         public string link { get; set; }

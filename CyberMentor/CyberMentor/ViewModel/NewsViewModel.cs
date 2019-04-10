@@ -23,8 +23,8 @@ namespace CyberMentor.ViewModel
             IsRunning = false;
         }
 
-        private ObservableCollection<CyberNews> _news;
-        public ObservableCollection<CyberNews> AllNews
+        private ObservableCollection<CyberNewsModel> _news;
+        public ObservableCollection<CyberNewsModel> AllNews
         {
             get { return _news; }
             set { _news = value; OnPropertyChanged(); }
