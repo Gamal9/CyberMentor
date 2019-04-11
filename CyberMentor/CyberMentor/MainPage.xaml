@@ -38,8 +38,8 @@
                 <RowDefinition Height="5*"/>
             </Grid.RowDefinitions>
             <Image Grid.Row="0" Margin="20,0" HorizontalOptions="Fill" VerticalOptions="Fill" Source="houseTxt.png"/>
-            <Grid Grid.Row="1">
-                <controls:FlowListView IsVisible="{Binding DataVisable}" FlowItemsSource="{Binding Categories}" FlowColumnCount="1" HasUnevenRows="True" RefreshCommand="{Binding RefreshCommand}" FlowItemTapped="FlowListView_FlowItemTapped" SeparatorColor="White" IsPullToRefreshEnabled="True" SelectionMode="None" IsRefreshing="{Binding IsRunning}">
+            <Grid Grid.Row="1" IsVisible="{Binding MainVisable}">
+                <controls:FlowListView FlowItemsSource="{Binding Categories}" FlowColumnCount="1" HasUnevenRows="True" RefreshCommand="{Binding RefreshCommand}" FlowItemTapped="FlowListView_FlowItemTapped" SeparatorColor="White" IsPullToRefreshEnabled="True" SelectionMode="None" IsRefreshing="{Binding IsRunning}">
                     <controls:FlowListView.FlowColumnTemplate>
                         <DataTemplate>
                             <Frame CornerRadius="20" HorizontalOptions="Fill" HeightRequest="50" Margin="5" BorderColor="Blue">
@@ -51,12 +51,11 @@
                         </DataTemplate>
                     </controls:FlowListView.FlowColumnTemplate>
                 </controls:FlowListView>
-                <StackLayout VerticalOptions="Center" HorizontalOptions="Center" IsVisible="{Binding Visable}">
-                    <Label FontSize="Large" Text="{i18n:Translate ErrorMessage}"/>
-                    <Button HorizontalOptions="Center" Clicked="Button_Clicked" Text="{i18n:Translate TryAgain}"/>
-                </StackLayout>
-                
             </Grid>
+            <StackLayout Grid.Row="1" VerticalOptions="Start" HorizontalOptions="Center" IsVisible="{Binding VisableError}">
+                <Label FontSize="Large" Text="{Binding ErrorValue}"/>
+                <Button HorizontalOptions="Center" Clicked="Button_Clicked" Text="{i18n:Translate TryAgain}"/>
+            </StackLayout>
         </Grid>
     </Grid>
 </ContentPage>

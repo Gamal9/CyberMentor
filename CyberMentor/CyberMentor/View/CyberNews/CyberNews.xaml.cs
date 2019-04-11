@@ -1,4 +1,5 @@
-﻿using CyberMentor.Model;
+﻿using CyberMentor.Helper;
+using CyberMentor.Model;
 using CyberMentor.View.Popup;
 using Rg.Plugins.Popup.Services;
 using System;
@@ -18,6 +19,7 @@ namespace CyberMentor.View
 		public CyberNews ()
 		{
 			InitializeComponent ();
+            BackImg.Rotation = (AppSettings.LastUserGravity == "English") ? 180 : 0;
 		}
 
         private void List_FlowItemTapped(object sender, ItemTappedEventArgs e)
@@ -34,6 +36,13 @@ namespace CyberMentor.View
         private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
         {
             Navigation.PopAsync();
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            this.BindingContext = null;
+            CyberNewsModel vm = new CyberNewsModel();
+            this.BindingContext = vm;
         }
     }
 }

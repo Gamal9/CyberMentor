@@ -1,6 +1,7 @@
 ﻿using CyberMentor.Helper;
 using CyberMentor.Model;
 using CyberMentor.Service;
+using Plugin.Connectivity;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,6 +18,8 @@ namespace CyberMentor.ViewModel
         public EventsViewModel()
         {
             IsRunning = true;
+            MainVisable = true;
+            VisableError = false;
             PageDirection = (AppSettings.LastUserGravity == "Arabic") ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
             DataGetter();
             IsRunning = false;
@@ -45,10 +48,36 @@ namespace CyberMentor.ViewModel
             set { _events = value; OnPropertyChanged(); }
         }
 
+        private string _ErrorValue;
+        public string ErrorValue
+        {
+            get { return _ErrorValue; }
+            set { _ErrorValue = value; OnPropertyChanged(); }
+        }
+
+        public bool VisableError { get; set; }
+        public bool MainVisable { get; set; }
+
+
         private async void DataGetter()
         {
-            TubeServices ser = new TubeServices();
-            Events = await ser.GetAllEvents();
+            if(CrossConnectivity.Current.IsConnected)
+            {
+                TubeServices ser = new TubeServices();
+                Events = await ser.GetAllEvents();
+                if(Events.Count==0)
+                {
+                    MainVisable = false;
+                    VisableError = true;
+                    ErrorValue = Resource.NoBuildings;
+                }
+            }
+            else
+            {
+                MainVisable = false;
+                VisableError = true;
+                ErrorValue = Resource.ErrorMessage;
+            }
         }
 
 

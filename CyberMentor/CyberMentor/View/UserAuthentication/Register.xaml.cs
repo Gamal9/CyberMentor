@@ -45,6 +45,7 @@ namespace CyberMentor.View
         bool checker = false;
         private async void Regbtn_Clicked(object sender, EventArgs e)
         {
+            Activ.IsRunning = true;
             if(CrossConnectivity.Current.IsConnected)
             {
                 if (EntryPassword.Text != ConfirmPassword.Text)
@@ -56,10 +57,10 @@ namespace CyberMentor.View
                     if (AllFieldsFilled())
                     {
                         UserServices ser = new UserServices();
+
                         var user = await ser.Register(EntryEmail.Text, EntryPassword.Text, EntryName.Text);
                         if (user == null)
                         {
-                            Activ.IsRunning = false;
                             await DisplayAlert("Error", "من فضلك تحقق من كلمة المرور", "OK");
                             return;
                         }
@@ -67,7 +68,6 @@ namespace CyberMentor.View
                         {
                             checker = true;
                             PopAlert(checker);
-                            Activ.IsRunning = false;
                             Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new Login());
                         }
                     }
@@ -77,6 +77,7 @@ namespace CyberMentor.View
             {
                 await DisplayAlert("Error", "من فضلك تحقق من الإتصال بالإنترنت", "OK");
             }
+            Activ.IsRunning = false;
         }
 
         private void PopAlert(bool x)

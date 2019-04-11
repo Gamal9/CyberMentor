@@ -18,31 +18,13 @@ namespace CyberMentor.ViewModel
     {
         public MainPageViewModel()
         {
-            if(CrossConnectivity.Current.IsConnected)
-            {
-                IsRunning = true;
-                Visable = false;
-                DataVisable = !Visable;
-                PageDirection = (AppSettings.LastUserGravity == "Arabic") ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
-                DataGetter();
-                IsRunning = false;
-            }
-            else
-            {
-                Visable = true;
-                DataVisable = !Visable;
-            }
+            IsRunning = true;
+            MainVisable = true;
+            VisableError = false;
+            PageDirection = (AppSettings.LastUserGravity == "Arabic") ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
+            DataGetter();
+            IsRunning = false;
         }
-
-        public bool DataVisable { get; set; }
-
-        private bool _visable;
-        public bool Visable
-        {
-            get { return _visable; }
-            set { _visable = value;OnPropertyChanged(); }
-        }
-
 
         public FlowDirection PageDirection { get; set; }
 
@@ -61,11 +43,36 @@ namespace CyberMentor.ViewModel
             set { _categories = value; OnPropertyChanged(); }
         }
 
+        private string _ErrorValue;
+        public string ErrorValue
+        {
+            get { return _ErrorValue; }
+            set { _ErrorValue = value; OnPropertyChanged(); }
+        }
+
+        public bool VisableError { get; set; }
+        public bool MainVisable { get; set; }
 
         private async void DataGetter()
         {
-            TubeServices ser = new TubeServices();
-            Categories = await ser.AllCategories();
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                TubeServices ser = new TubeServices();
+                Categories = await ser.AllCategories();
+                if (Categories.Count == 0)
+                {
+                    MainVisable = false;
+                    VisableError = true;
+                    ErrorValue = Resource.NoBuildings;
+                }
+            }
+            else
+            {
+                MainVisable = false;
+                VisableError = true;
+                ErrorValue = Resource.ErrorMessage;
+            }
+            
         }
 
         public ICommand RefreshCommand

@@ -2,6 +2,7 @@
 using CyberMentor.Model;
 using CyberMentor.Service;
 using GalaSoft.MvvmLight.Command;
+using Plugin.Connectivity;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -18,10 +19,22 @@ namespace CyberMentor.ViewModel
         public NewsViewModel()
         {
             IsRunning = true;
+            MainVisable = true;
+            VisableError = false;
             PageDirection = (AppSettings.LastUserGravity == "Arabic") ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
             DataGetter();
             IsRunning = false;
         }
+
+        private string _ErrorValue;
+        public string ErrorValue
+        {
+            get { return _ErrorValue; }
+            set { _ErrorValue = value; OnPropertyChanged(); }
+        }
+
+        public bool VisableError { get; set; }
+        public bool MainVisable { get; set; }
 
         private ObservableCollection<CyberNewsModel> _news;
         public ObservableCollection<CyberNewsModel> AllNews
@@ -42,8 +55,23 @@ namespace CyberMentor.ViewModel
 
         private async void DataGetter()
         {
-            TubeServices ser = new TubeServices();
-            AllNews = await ser.GetAllNews();
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                TubeServices ser = new TubeServices();
+                AllNews = await ser.GetAllNews();
+                if (AllNews.Count == 0)
+                {
+                    MainVisable = false;
+                    VisableError = true;
+                    ErrorValue = Resource.NoBuildings;
+                }
+            }
+            else
+            {
+                MainVisable = false;
+                VisableError = true;
+                ErrorValue = Resource.ErrorMessage;
+            }
         }
 
         public ICommand RefreshCommand

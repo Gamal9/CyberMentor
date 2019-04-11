@@ -1,8 +1,10 @@
-﻿using CyberMentor.Model;
+﻿using CyberMentor.Helper;
+using CyberMentor.Model;
 using CyberMentor.Service;
 using GalaSoft.MvvmLight.Command;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Plugin.Connectivity;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -59,8 +61,23 @@ namespace CyberMentor.ViewModel
 
         public TubeViewModel()
         {
+            IsRunning = true;
+            MainVisable = true;
+            VisableError = false;
+            PageDirection = (AppSettings.LastUserGravity == "Arabic") ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
+            IsRunning = false;
             InitDataAsync();
         }
+
+        private string _ErrorValue;
+        public string ErrorValue
+        {
+            get { return _ErrorValue; }
+            set { _ErrorValue = value; OnPropertyChanged(); }
+        }
+
+        public bool VisableError { get; set; }
+        public bool MainVisable { get; set; }
 
         public bool isRunning { get; set; }
 
@@ -75,132 +92,36 @@ namespace CyberMentor.ViewModel
         public async void InitDataAsync()
         {
             IsRunning = true;
-            TubeServices ser = new TubeServices();
-            //var videoIds = await GetVideoIdsFromChannelAsync();
-            var data = await ser.GetAllTubes();
-            foreach (var item in data)
+            if (CrossConnectivity.Current.IsConnected)
             {
-                var x = await GetVideosDetailsAsync(item.key);
-                item.Youtube = x;
-            }
-            AllTubes = data;
-            IsRunning = false;
-        }
-
-        private async Task<List<string>> GetVideoIdsFromChannelAsync()
-        {
-            var httpClient = new HttpClient();
-
-            var json = await httpClient.GetStringAsync(apiUrlForChannel);
-
-            var videoIds = new List<string>();
-
-            try
-            {
-                JObject response = JsonConvert.DeserializeObject<dynamic>(json);
-
-                var items = response.Value<JArray>("items");
-
-                foreach (var item in items)
+                TubeServices ser = new TubeServices();
+                var data = await ser.GetAllTubes();
+                AllTubes = data;
+                if (AllTubes.Count == 0)
                 {
-                    videoIds.Add(item.Value<JObject>("id")?.Value<string>("videoId"));
+                    MainVisable = false;
+                    VisableError = true;
+                    ErrorValue = Resource.NoBuildings;
                 }
-
-                YoutubeItems = await GetVideosDetailsAsync(videoIds);
-            }
-            catch (Exception exception)
-            {
-            }
-
-            return videoIds;
-        }
-
-        private async Task<List<string>> GetVideoIdsFromPlaylistAsync()
-        {
-
-            var httpClient = new HttpClient();
-
-            var json = await httpClient.GetStringAsync(apiUrlForPlaylist);
-
-            var videoIds = new List<string>();
-
-            try
-            {
-                JObject response = JsonConvert.DeserializeObject<dynamic>(json);
-
-                var items = response.Value<JArray>("items");
-
-                foreach (var item in items)
+                else
                 {
-                    videoIds.Add(item.Value<JObject>("contentDetails")?.Value<string>("videoId"));
-                };
-
-                YoutubeItems = await GetVideosDetailsAsync(videoIds);
-            }
-            catch (Exception exception)
-            {
-            }
-
-            return videoIds;
-        }
-
-        private async Task<List<YoutubeItem>> GetVideosDetailsAsync(List<string> videoIds)
-        {
-
-            var videoIdsString = "";
-            foreach (var s in videoIds)
-            {
-                videoIdsString += s + ",";
-            }
-
-            var httpClient = new HttpClient();
-
-            var json = await httpClient.GetStringAsync(string.Format(apiUrlForVideosDetails, videoIdsString));
-
-            var youtubeItems = new List<YoutubeItem>();
-
-            try
-            {
-                JObject response = JsonConvert.DeserializeObject<dynamic>(json);
-
-                var items = response.Value<JArray>("items");
-
-                foreach (var item in items)
-                {
-                    var snippet = item.Value<JObject>("snippet");
-                    var statistics = item.Value<JObject>("statistics");
-
-                    var youtubeItem = new YoutubeItem
+                    foreach (var item in data)
                     {
-                        Title = snippet.Value<string>("title"),
-                        Description = snippet.Value<string>("description"),
-                        ChannelTitle = snippet.Value<string>("channelTitle"),
-                        PublishedAt = snippet.Value<DateTime>("publishedAt"),
-                        VideoId = item?.Value<string>("id"),
-                        DefaultThumbnailUrl = snippet?.Value<JObject>("thumbnails")?.Value<JObject>("default")?.Value<string>("url"),
-                        MediumThumbnailUrl = snippet?.Value<JObject>("thumbnails")?.Value<JObject>("medium")?.Value<string>("url"),
-                        HighThumbnailUrl = snippet?.Value<JObject>("thumbnails")?.Value<JObject>("high")?.Value<string>("url"),
-                        StandardThumbnailUrl = snippet?.Value<JObject>("thumbnails")?.Value<JObject>("standard")?.Value<string>("url"),
-                        MaxResThumbnailUrl = snippet?.Value<JObject>("thumbnails")?.Value<JObject>("maxres")?.Value<string>("url"),
-
-                        ViewCount = statistics?.Value<int>("viewCount"),
-                        LikeCount = statistics?.Value<int>("likeCount"),
-                        DislikeCount = statistics?.Value<int>("dislikeCount"),
-                        FavoriteCount = statistics?.Value<int>("favoriteCount"),
-                        CommentCount = statistics?.Value<int>("commentCount"),
-
-                        Tags = (from tag in snippet?.Value<JArray>("tags") select tag.ToString())?.ToList(),
-                    };
-
-                    youtubeItems.Add(youtubeItem);
+                        var x = await GetVideosDetailsAsync(item.key);
+                        item.Youtube = x;
+                    }
+                    AllTubes = data;
                 }
-
-                return youtubeItems;
             }
-            catch (Exception exception)
+            else
             {
-                return youtubeItems;
+                MainVisable = false;
+                VisableError = true;
+                ErrorValue = Resource.ErrorMessage;
             }
+            IsRunning = false;
+            //var videoIds = await GetVideoIdsFromChannelAsync();
+
         }
 
         private async Task<YoutubeItem> GetVideosDetailsAsync(string videoIds)

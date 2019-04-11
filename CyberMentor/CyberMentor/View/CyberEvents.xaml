@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" NavigationPage.HasNavigationBar="False"
              xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              xmlns:viewmodel="clr-namespace:CyberMentor.ViewModel"
+             xmlns:i18n="clr-namespace:CyberMentor.Helper"
              xmlns:local="clr-namespace:CyberMentor.Model" FlowDirection="{Binding PageDirection}"
              x:Class="CyberMentor.View.CyberEvents">
 
@@ -34,7 +35,7 @@
                     </Image.GestureRecognizers>
                 </Image>
             </Grid>
-            <Grid Padding="0" Grid.Row="1">
+            <Grid Padding="0" Grid.Row="1" IsVisible="{Binding MainVisable}">
                 <flv:FlowListView SeparatorVisibility="None" RefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsRunning}" IsPullToRefreshEnabled="True" BackgroundColor="Transparent" SeparatorColor="#DFDFDF" HasUnevenRows="false" RowHeight="180" FlowItemTapped="List_FlowItemTapped" FlowItemsSource="{Binding Events}" x:Name="list"  FlowColumnCount="1" FlowColumnExpand="Proportional" >
                     <flv:FlowListView.FlowColumnTemplate>
                         <DataTemplate>
@@ -81,10 +82,12 @@
                 </flv:FlowListView>
             </Grid>
 
-            
-
+            <StackLayout Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center" IsVisible="{Binding VisableError}">
+                <Label FontSize="Large" Text="{Binding ErrorValue}"/>
+                <Button HorizontalOptions="Center" Clicked="Button_Clicked" Text="{i18n:Translate TryAgain}"/>
+            </StackLayout>
         </Grid>
-       
+        <ActivityIndicator IsRunning="{Binding IsRunning}" VerticalOptions="Center" HorizontalOptions="Center" Color="Blue"/>
     </Grid>
     
 </ContentPage>

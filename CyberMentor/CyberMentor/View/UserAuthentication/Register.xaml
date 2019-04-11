@@ -47,7 +47,7 @@
                 </StackLayout>
             </StackLayout>
         </Grid>
-        <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" x:Name="Activ" Color="OrangeRed"/>
+        <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" x:Name="Activ" Color="Blue"/>
     </Grid>
 
 </ContentPage>

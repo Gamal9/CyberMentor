@@ -1,4 +1,5 @@
-﻿using CyberMentor.Model;
+﻿using CyberMentor.Helper;
+using CyberMentor.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,6 +18,7 @@ namespace CyberMentor.View
 		public SubCategories (List<SubCatModel> cats)
 		{
 			InitializeComponent ();
+            BackImg.Rotation = (AppSettings.LastUserGravity == "English") ? 180 : 0;
             list.FlowItemsSource = cats;
 		}
 

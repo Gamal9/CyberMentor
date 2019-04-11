@@ -1,6 +1,8 @@
-﻿using CyberMentor.Model;
+﻿using CyberMentor.Helper;
+using CyberMentor.Model;
 using CyberMentor.Service;
 using CyberMentor.View.Popup;
+using Plugin.Connectivity;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -20,6 +22,9 @@ namespace CyberMentor.View
 		public ProtectMe (int id)
 		{
 			InitializeComponent ();
+            StkMain.IsVisible = true;
+            StkError.IsVisible = false;
+            BackImg.Rotation = (AppSettings.LastUserGravity == "English") ? 180 : 0;
             ID = id;
             DataGetter();
 		}
@@ -27,11 +32,26 @@ namespace CyberMentor.View
         private async void DataGetter()
         {
             Activ.IsRunning = true;
-            TubeServices ser = new TubeServices();
-            var items = await ser.AllSubItemsPage(ID);
-            if(items.Count!=0)
+            if(CrossConnectivity.Current.IsConnected)
             {
-                list.FlowItemsSource = items;
+                TubeServices ser = new TubeServices();
+                var items = await ser.AllSubItemsPage(ID);
+                if (items.Count == 0)
+                {
+                    StkMain.IsVisible = false;
+                    StkError.IsVisible = true;
+                    LblError.Text = Resource.NoBuildings;
+                }
+                else
+                {
+                    list.FlowItemsSource = items;
+                }
+            }
+            else
+            {
+                StkMain.IsVisible = false;
+                StkError.IsVisible = true;
+                LblError.Text = Resource.ErrorMessage;
             }
             Activ.IsRunning = false;
         }
@@ -50,6 +70,11 @@ namespace CyberMentor.View
         private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
         {
             Navigation.PopAsync();
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            DataGetter();
         }
     }
 }

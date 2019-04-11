@@ -62,6 +62,7 @@ namespace CyberMentor.View
             {
                 if (AllFieldsFilled())
                 {
+                    Activ.IsRunning = true;
                     UserServices ser = new UserServices();
                     var user = await ser.UserLogin(EntryEmail.Text, EntryPassword.Text);
                     if (user == null)

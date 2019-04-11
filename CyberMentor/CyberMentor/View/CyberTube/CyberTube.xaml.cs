@@ -1,4 +1,8 @@
-﻿using CyberMentor.Model;
+﻿using CyberMentor.Helper;
+using CyberMentor.Model;
+using CyberMentor.View.Popup;
+using CyberMentor.ViewModel;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,12 +20,13 @@ namespace CyberMentor.View
 		public CyberTube ()
 		{
 			InitializeComponent ();
-		}
+            BackImg.Rotation = (AppSettings.LastUserGravity == "English") ? 180 : 0;
+        }
 
         private void FlowListView_FlowItemTapped(object sender, ItemTappedEventArgs e)
         {
             var item = e.Item as CyberMentor.Model.CyberModel;
-            Navigation.PushModalAsync(new VideoPage(item.key));
+            PopupNavigation.Instance.PushAsync(new YoutubePopUp(item.key));
         }
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
@@ -32,6 +37,13 @@ namespace CyberMentor.View
         private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
         {
             Navigation.PopAsync();
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            this.BindingContext = null;
+            TubeViewModel vm = new TubeViewModel();
+            this.BindingContext = vm;
         }
 
         //protected override void OnDisappearing()
