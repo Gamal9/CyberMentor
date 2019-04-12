@@ -138,8 +138,8 @@
   <data name="Area" xml:space="preserve">
     <value>Area :</value>
   </data>
-  <data name="BuildDate" xml:space="preserve">
-    <value>Built in :</value>
+  <data name="Departments" xml:space="preserve">
+    <value>Departments</value>
   </data>
   <data name="BuildingNumber" xml:space="preserve">
     <value>Building Number :</value>
@@ -383,5 +383,8 @@
   </data>
   <data name="ProtectMe" xml:space="preserve">
     <value>Protect Me</value>
+  </data>
+  <data name="AboutUs" xml:space="preserve">
+    <value>About Us</value>
   </data>
 </root>

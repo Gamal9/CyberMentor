@@ -40,26 +40,24 @@ namespace CyberMentor
             LblLanguage.Text = (LblLanguage.Text == "عربى") ? "English" : "عربى";
         }
 
-        
 
         private void FlowListView_FlowItemTapped(object sender, ItemTappedEventArgs e)
         {
             var item = e.Item as CatModel;
-            if (item.id == 4)
+            switch (item.id)
             {
-                Navigation.PushAsync(new CyberTube());
-            }
-            if (item.id == 3)
-            {
-                Navigation.PushAsync(new CyberEvents());
-            }
-            if (item.id == 2)
-            {
-                Navigation.PushAsync(new CyberMentor.View.CyberNews());
-            }
-            if (item.id == 1)
-            {
-                Navigation.PushAsync(new SubCategories(item.sub_categories));
+                case 4:
+                    Navigation.PushAsync(new CyberTube());
+                    break;
+                case 3:
+                    Navigation.PushAsync(new CyberEvents());
+                    break;
+                case 2:
+                    Navigation.PushAsync(new CyberMentor.View.CyberNews());
+                    break;
+                case 1:
+                    Navigation.PushAsync(new SubCategories(item.sub_categories));
+                    break;
             }
         }
 

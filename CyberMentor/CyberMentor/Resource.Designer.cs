@@ -61,6 +61,15 @@ namespace CyberMentor {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About Us.
+        /// </summary>
+        internal static string AboutUs {
+            get {
+                return ResourceManager.GetString("AboutUs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add New .
         /// </summary>
         internal static string Add {
@@ -120,15 +129,6 @@ namespace CyberMentor {
         internal static string Area {
             get {
                 return ResourceManager.GetString("Area", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Built in :.
-        /// </summary>
-        internal static string BuildDate {
-            get {
-                return ResourceManager.GetString("BuildDate", resourceCulture);
             }
         }
         
@@ -291,6 +291,15 @@ namespace CyberMentor {
         internal static string DelieveryDate {
             get {
                 return ResourceManager.GetString("DelieveryDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Departments.
+        /// </summary>
+        internal static string Departments {
+            get {
+                return ResourceManager.GetString("Departments", resourceCulture);
             }
         }
         

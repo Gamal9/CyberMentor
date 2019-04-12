@@ -75,6 +75,8 @@ namespace CyberMentor.View
                     {
                         checker = true;
                         AppSettings.LastUsedID = user.id;
+                        AppSettings.LastUsedEmail = user.email;
+                        AppSettings.UserHash = user.name;
                         PopAlert(checker);
                         Activ.IsRunning = false;
                         Device.BeginInvokeOnMainThread(() => App.Current.MainPage = new MenuPage());

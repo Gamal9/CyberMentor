@@ -141,8 +141,8 @@
   <data name="Area" xml:space="preserve">
     <value>المساحة :</value>
   </data>
-  <data name="BuildDate" xml:space="preserve">
-    <value> تاريخ البناء :</value>
+  <data name="Departments" xml:space="preserve">
+    <value>الأقسام</value>
   </data>
   <data name="BuildingNumber" xml:space="preserve">
     <value>رقم الإعلان :</value>
@@ -245,9 +245,6 @@
   </data>
   <data name="MasterAppLyc" xml:space="preserve">
     <value>سياسة التطبيق</value>
-  </data>
-  <data name="MasterLogOut" xml:space="preserve">
-    <value>تسجيل الخروج</value>
   </data>
   <data name="MasterNotification" xml:space="preserve">
     <value>الإشعارات</value>
