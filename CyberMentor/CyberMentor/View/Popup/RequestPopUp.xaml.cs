@@ -86,10 +86,7 @@ namespace CyberMentor.View
                     LblTitle.Text = "نأسف لقد تم حجز هذا المعاد من قبل";
                 }
             }
-            {
-
-            }
-
+            
         }
 
 

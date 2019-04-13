@@ -12,12 +12,7 @@
                 <RowDefinition Height="3*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="3*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Image x:Name="image" Source="houseLogo.png" Grid.Row="0" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Start"/>
-                <Image  Source="houseTxt.png" Aspect="AspectFit" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="End"/>
+                <Image x:Name="image" Source="house.png" Aspect="AspectFit" />
             </Grid>
             <StackLayout  Padding="20,0,20,0" Grid.Row="2" VerticalOptions="Center">
                 <!-- Place new controls here -->
@@ -39,12 +34,12 @@
 
                     <Button x:Name="Loginbtn" Text="{i18n:Translate Login}" Clicked="Loginbtn_Clicked" BackgroundColor="Blue" Padding="8" Margin="10" TextColor="White" BorderRadius="10" HeightRequest="60" WidthRequest="110"/>
                     <StackLayout Orientation="Horizontal" x:Name="RegLbl" HorizontalOptions="Center">
-                        <Label Text="{i18n:Translate Register}" FontSize="Medium" TextColor="#FF4500" HorizontalOptions="Start" FontAttributes="Bold">
+                        <Label Text="{i18n:Translate NoAccount}" TextColor="Gray" Opacity="0.4" HorizontalOptions="Start" Margin="0,0,0,20"/>
+                        <Label Text="{i18n:Translate Register}" FontSize="Medium" TextColor="#FF4500" HorizontalOptions="End" FontAttributes="Bold">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" />
                             </Label.GestureRecognizers>
                         </Label>
-                        <Label Text="{i18n:Translate NoAccount}" TextColor="Gray" Opacity="0.4" HorizontalOptions="End" Margin="0,0,0,20"/>
                     </StackLayout>
                 </StackLayout>
             </StackLayout>

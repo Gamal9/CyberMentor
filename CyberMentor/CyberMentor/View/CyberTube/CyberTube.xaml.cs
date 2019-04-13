@@ -20,13 +20,14 @@ namespace CyberMentor.View
 		public CyberTube ()
 		{
 			InitializeComponent ();
-            BackImg.Rotation = (AppSettings.LastUserGravity == "English") ? 180 : 0;
+            BackImg.Rotation = (AppSettings.LastUserGravity == "English") ? 0 : 180;
         }
 
         private void FlowListView_FlowItemTapped(object sender, ItemTappedEventArgs e)
         {
             var item = e.Item as CyberMentor.Model.CyberModel;
-            PopupNavigation.Instance.PushAsync(new YoutubePopUp(item.key));
+            string src = "https://www.youtube.com/watch?v=" + item.key;
+            Navigation.PushAsync(new LinkPage(src));
         }
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)

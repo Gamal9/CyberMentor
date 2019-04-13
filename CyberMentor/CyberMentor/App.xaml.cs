@@ -13,7 +13,7 @@ namespace CyberMentor
         public App()
         {
             InitializeComponent();
-            MainPage = new NavigationPage(new Login());
+            MainPage = new NavigationPage(new SplashPage());
         }
 
         protected override void OnStart()

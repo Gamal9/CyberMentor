@@ -13,7 +13,7 @@
     <StackLayout VerticalOptions="Center" Padding="20,0" HorizontalOptions="Center">
         <Frame CornerRadius="20" Padding="0" x:Name="PopFrame">
             <StackLayout Padding="10" FlowDirection="RightToLeft">
-                <Image Aspect="AspectFit" HorizontalOptions="Center" Source="WaselLogo.png"/>
+                <Image Aspect="AspectFit" HorizontalOptions="Center" Source="house.png"/>
                 <Label Text="هل تريد تسجيل الخروج ؟" TextColor="White" FontSize="Medium" HorizontalOptions="Center"/>
                 <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
                     <Button Text="نعم" BackgroundColor="White" TextColor="Green" BorderRadius="50" Clicked="Button_Clicked"/>

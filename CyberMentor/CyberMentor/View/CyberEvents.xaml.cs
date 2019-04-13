@@ -20,13 +20,13 @@ namespace CyberMentor.View
 		public CyberEvents ()
 		{
 			InitializeComponent ();
-            BackImg.Rotation = (AppSettings.LastUserGravity == "English") ? 180 : 0;
+            BackImg.Rotation = (AppSettings.LastUserGravity == "English") ? 0 : 180;
         }
 
         private void List_FlowItemTapped(object sender, ItemTappedEventArgs e)
         {
             var item = e.Item as CyberNewsModel;
-            PopupNavigation.Instance.PushAsync(new LinkPage(item.link));
+            Navigation.PushAsync(new LinkPage(item.link));
         }
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)

@@ -94,8 +94,8 @@ namespace CyberMentor.View.MainMdPage
 
         private void TapGestureRecognizer_Tapped_2(object sender, EventArgs e)
         {
-            App.Current.MainPage = new MenuPage();
             (App.Current.MainPage as MasterDetailPage).IsPresented = false;
+            App.Current.MainPage = new MenuPage();
         }
 
         private void TapGestureRecognizer_Tapped_3(object sender, EventArgs e)

@@ -12,13 +12,13 @@
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0" VerticalOptions="Center">
-                <Image x:Name="image" Aspect="AspectFit" Source="houseLogo.png" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Image x:Name="image" Aspect="AspectFit" Source="house.png" HorizontalOptions="Center" VerticalOptions="Center"/>
             </Grid>
 
             <StackLayout Padding="20,0,20,0" Grid.Row="1" VerticalOptions="Start">
                 <StackLayout >
                     <StackLayout Orientation="Horizontal">
-                        <Image Source="user.png" Aspect="AspectFit"/>
+                        <Image Source="" Aspect="AspectFit"/>
                         <Entry Placeholder="{i18n:Translate Name}" x:Name="EntryName" PlaceholderColor="LightGray"  HorizontalOptions="FillAndExpand"/>
                     </StackLayout>
 

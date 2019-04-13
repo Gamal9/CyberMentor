@@ -18,7 +18,7 @@ namespace CyberMentor.View
 		public SubCategories (List<SubCatModel> cats)
 		{
 			InitializeComponent ();
-            BackImg.Rotation = (AppSettings.LastUserGravity == "English") ? 180 : 0;
+            BackImg.Rotation = (AppSettings.LastUserGravity == "English") ? 0 : 180;
             list.FlowItemsSource = cats;
 		}
 

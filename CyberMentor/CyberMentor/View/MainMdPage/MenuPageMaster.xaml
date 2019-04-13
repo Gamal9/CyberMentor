@@ -52,14 +52,14 @@
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
                     <StackLayout HorizontalOptions="Fill" Margin="5">
-                        <Grid Margin="5,0">
+                        <Grid Margin="0,5">
                             <Label Text="{i18n:Translate AboutUs}" FontSize="Large" HorizontalOptions="Start" VerticalOptions="Center"/>
                             <Image Source="aboutus.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="Center"/>
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3"/>
                             </Grid.GestureRecognizers>
                         </Grid>
-                        <Grid Margin="5,0">
+                        <Grid Margin="0,5">
                             <Label Text="{i18n:Translate Policy}" FontSize="Large" HorizontalOptions="Start" VerticalOptions="Center"/>
                             <Image Source="policy.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="Center"/>
                             <Grid.GestureRecognizers>
