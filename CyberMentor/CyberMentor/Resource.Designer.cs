@@ -97,6 +97,15 @@ namespace CyberMentor {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add New Review.
+        /// </summary>
+        internal static string AddReview {
+            get {
+                return ResourceManager.GetString("AddReview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to My Adertisments .
         /// </summary>
         internal static string Ads {
@@ -705,6 +714,15 @@ namespace CyberMentor {
         internal static string Register {
             get {
                 return ResourceManager.GetString("Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reviews.
+        /// </summary>
+        internal static string Reviews {
+            get {
+                return ResourceManager.GetString("Reviews", resourceCulture);
             }
         }
         

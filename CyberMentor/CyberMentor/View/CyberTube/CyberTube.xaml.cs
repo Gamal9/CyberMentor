@@ -20,7 +20,7 @@ namespace CyberMentor.View
 		public CyberTube ()
 		{
 			InitializeComponent ();
-            BackImg.Rotation = (AppSettings.LastUserGravity == "English") ? 0 : 180;
+            BackImg.Rotation = (AppSettings.LastUserGravity == "English") ? 180 : 0;
         }
 
         private void FlowListView_FlowItemTapped(object sender, ItemTappedEventArgs e)

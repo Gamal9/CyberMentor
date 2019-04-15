@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:CyberMentor.Helper"
+             x:Class="CyberMentor.View.ProtectItemPage">
+
+    <Grid>
+        <ListView x:Name="list" HasUnevenRows="True" SelectionMode="None">
+            <ListView.Header>
+                <StackLayout Margin="0,0,0,30">
+                    <Image x:Name="ImgTitle" HeightRequest="250" Aspect="AspectFill" Source="{Binding img,StringFormat='https://cyber.alsalil.net/users/images/{0:N}'}"/>
+                    <Frame BackgroundColor="White" Margin="5" CornerRadius="10" VerticalOptions="Center" HorizontalOptions="Center">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Label  Grid.Row="0" x:Name="LblTitle" TextColor="Black" FontSize="Large" />
+                            <Label  Grid.Row="1" Margin="10,0" x:Name="LblBody" FontSize="Small" />
+                        </Grid>
+                    </Frame>
+                    <Frame CornerRadius="20" BackgroundColor="LightBlue" HorizontalOptions="Center">
+                        <Label Text="{i18n:Translate Reviews}" FontSize="Large" TextColor="White" HorizontalOptions="Center"/>
+                    </Frame>
+                    <Frame HeightRequest="30" CornerRadius="20" BackgroundColor="White" Margin="5" HorizontalOptions="Fill">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="message.png" VerticalOptions="Center" Aspect="AspectFit"/>
+                            <Label Text="{i18n:Translate AddReview}" VerticalOptions="Center"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame Margin="5" BackgroundColor="White" HeightRequest="60" BorderColor="Gray" CornerRadius="10">
+                            <StackLayout>
+                                <Label TextColor="LightBlue" Text="{Binding title}" FontSize="Large"/>
+                                <Label TextColor="Gray" Text="{Binding desc}" FontSize="Small"/>
+                            </StackLayout>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+
+
+</ContentPage>

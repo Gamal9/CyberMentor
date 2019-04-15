@@ -12,16 +12,16 @@
                 <RowDefinition Height="12*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
                 <Image HorizontalOptions="Start" x:Name="BackImg" Grid.Row="0" Margin="0,5" Source="leftarrow.png">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                     </Image.GestureRecognizers>
                 </Image>
-                <Label Grid.Row="1" HorizontalOptions="Fill" x:Name="LblLink"/>
+                <Label Grid.Column="1" HorizontalOptions="Fill" x:Name="LblLink"/>
             </Grid>
             <local:CustomWebView Grid.Row="1" x:Name="webView" VerticalOptions="Fill" HorizontalOptions="Fill" />
         </Grid>

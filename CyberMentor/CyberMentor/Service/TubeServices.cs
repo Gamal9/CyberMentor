@@ -102,5 +102,51 @@ namespace CyberMentor.Service
             return Cats;
         }
 
+        public async Task<ObservableCollection<CyberReview>> NewsReview(int id)
+        {
+            var httpClient = new HttpClient();
+            //Dictionary<string, int> values = new Dictionary<string, int>();
+            //values.Add("post_id", id);
+            //string content = JsonConvert.SerializeObject(values);
+            var Reviews = new ObservableCollection<CyberReview>();
+            var json = await httpClient.GetStringAsync("https://cyber.alsalil.net/api/getreview");
+            try
+            {
+                var response = JsonConvert.DeserializeObject<Response<string, ResponseData<ObservableCollection<CyberReview>>>>(json.ToString());
+                Reviews = new ObservableCollection<CyberReview>(response.message.data);
+            }
+            catch (Exception exception)
+            {
+
+            }
+
+            return Reviews;
+        }
+
+        public async Task<string> PostReview(CyberReview review)
+        {
+            var httpClient = new HttpClient();
+            Dictionary<string, string> values = new Dictionary<string, string>();
+            values.Add("title", review.title);
+            values.Add("desc", review.desc);
+            values.Add("user_id", review.user_id.ToString());
+            values.Add("post_id", review.post_id.ToString());
+            string content = JsonConvert.SerializeObject(values);
+            string message="";
+            var json = await httpClient.PostAsync("https://cyber.alsalil.net/api/postreview", new StringContent(content, Encoding.UTF8, "text/json"));
+            try
+            {
+                var response = JsonConvert.DeserializeObject<Response<string, string>>(json.Content.ReadAsStringAsync().Result.ToString());
+                message= response.message;
+            }
+            catch (Exception exception)
+            {
+
+            }
+
+            return message;
+        }
+
+
     }
 }

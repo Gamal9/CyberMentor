@@ -17,7 +17,8 @@ namespace CyberMentor.View.Popup
 		public LinkPage (string src)
 		{
 			InitializeComponent ();
-            BackImg.Rotation = (AppSettings.LastUserGravity == "English") ? 0 : 180;
+            FlowDirection = (AppSettings.LastUserGravity == "English") ? FlowDirection.LeftToRight : FlowDirection.RightToLeft;
+            BackImg.Rotation = (AppSettings.LastUserGravity == "English") ? 180 : 0;
             LblLink.Text = src;
             webView.Source = src;
 		}

@@ -41,7 +41,7 @@
 				Type=RelativeToParent,
 				Property=Width,
 				Factor=1}" 
-               Aspect="AspectFill" Source="{Binding img,StringFormat='http://wassel.alsalil.net/users/images/{0:N}'}"/>
+               Aspect="AspectFill" Source="{Binding img,StringFormat='https://cyber.alsalil.net/public/assets/imgs/{0:N}'}"/>
                                 <StackLayout Opacity="0.6" BackgroundColor="White" Margin="20,0,20,0"
 			RelativeLayout.WidthConstraint="{ConstraintExpression
 				Type=RelativeToParent,            
@@ -58,12 +58,8 @@
                                             <RowDefinition Height="*"/>
                                             <RowDefinition Height="2*"/>
                                         </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Label  Grid.Row="0" Grid.Column="0" Text="{Binding title}" TextColor="Black" />
-                                        <Label  Grid.Row="1" Grid.ColumnSpan="2"  Text="{Binding body }" />
+                                        <Label  Grid.Row="0" Text="{Binding title}" FontSize="Large" TextColor="Black" />
+                                        <Label  Grid.Row="1" Text="{Binding body }" />
                                     </Grid>
                                 </StackLayout>
                             </RelativeLayout>

@@ -24,7 +24,7 @@ namespace CyberMentor.View
 			InitializeComponent ();
             StkMain.IsVisible = true;
             StkError.IsVisible = false;
-            BackImg.Rotation = (AppSettings.LastUserGravity == "English") ? 0 : 180;
+            BackImg.Rotation = (AppSettings.LastUserGravity == "English") ? 180 : 0;
             ID = id;
             DataGetter();
 		}
@@ -59,7 +59,7 @@ namespace CyberMentor.View
         private void List_FlowItemTapped(object sender, ItemTappedEventArgs e)
         {
             var item = e.Item as CyberNewsModel;
-            Navigation.PushAsync(new LinkPage(item.link));
+            Navigation.PushAsync(new ProtectItemPage(item));
         }
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)

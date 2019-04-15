@@ -20,7 +20,7 @@ namespace CyberMentor.View
 		public CyberEvents ()
 		{
 			InitializeComponent ();
-            BackImg.Rotation = (AppSettings.LastUserGravity == "English") ? 0 : 180;
+            BackImg.Rotation = (AppSettings.LastUserGravity == "English") ? 180 : 0;
         }
 
         private void List_FlowItemTapped(object sender, ItemTappedEventArgs e)

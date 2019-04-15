@@ -384,4 +384,10 @@
   <data name="ProtectMe" xml:space="preserve">
     <value>كيف أحمي نفسي من الإختراق</value>
   </data>
+  <data name="AddReview" xml:space="preserve">
+    <value>إضافة تعليق</value>
+  </data>
+  <data name="Reviews" xml:space="preserve">
+    <value>التعليقات</value>
+  </data>
 </root>

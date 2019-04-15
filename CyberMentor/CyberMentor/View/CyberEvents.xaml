@@ -60,20 +60,18 @@
 				Property=Height,
 				Factor=1,
 				Constant=-10}">
-                                    <Grid Padding="10" VerticalOptions="Center" HorizontalOptions="Center">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="*"/>
-                                            <RowDefinition Height="2*"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Label  Grid.Row="0" Grid.Column="0" Text="{Binding title}" TextColor="Black" />
-                                        <StackLayout HorizontalOptions="Center" Grid.Row="0" Grid.Column="1">
-                                            <Label  Text="التقييم" TextColor="Red"/>
-                                        </StackLayout>
-                                        <Label  Grid.Row="1" Grid.ColumnSpan="2"  Text="{Binding link }" />
+                                    <Grid>
+                                        <Image Source="{Binding logo, StringFormat='https://cyber.alsalil.net/public/assets/imgs/{0:N}'}" Aspect="AspectFill"/>
+                                        <Grid Padding="10" VerticalOptions="Center" HorizontalOptions="Center">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="2*"/>
+                                            </Grid.RowDefinitions>
+
+
+                                            <Label  Grid.Row="0"  Text="{Binding title}" TextColor="Black" />
+                                            <Label  Grid.Row="1"   Text="{Binding link }" />
+                                        </Grid>
                                     </Grid>
                                 </StackLayout>
                             </RelativeLayout>
