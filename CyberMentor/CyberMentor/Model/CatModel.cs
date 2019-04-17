@@ -8,6 +8,8 @@ namespace CyberMentor.Model
     {
         public int id { get; set; }
         public string name { get; set; }
+        public string en_name { get; set; }
+        public string ar_name { get; set; }
         public string logo { get; set; }
         public List<SubCatModel> sub_categories { get; set; }
         public string created_at { get; set; }

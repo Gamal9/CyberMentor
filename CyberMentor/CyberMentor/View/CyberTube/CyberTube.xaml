@@ -9,7 +9,6 @@
     <ContentPage.BindingContext>
         <viewmodel:TubeViewModel/>
     </ContentPage.BindingContext>
-    <!--<local:CustomWebView x:Name="webView" Source="https://www.youtube.com/embed/DHHY8m3rEzU" HeightRequest="220" VerticalOptions="Start" />-->
 
     <Grid>
         <Grid BackgroundColor="White">

@@ -1,4 +1,5 @@
 ﻿using CyberMentor.Helper;
+using CyberMentor.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,10 @@ namespace CyberMentor.View
             (App.Current.MainPage as MasterDetailPage).IsPresented = true;
         }
 
-        
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            this.BindingContext = null;
+            this.BindingContext = new SettingsViewModel();
+        }
     }
 }

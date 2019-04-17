@@ -147,6 +147,25 @@ namespace CyberMentor.Service
             return message;
         }
 
+        public async Task<SettingsModel> GetSettings()
+        {
+            var httpClient = new HttpClient();
+            
+            var Reviews = new SettingsModel();
+            var json = await httpClient.GetStringAsync("https://cyber.alsalil.net/api/getSetting");
+            try
+            {
+                var response = JsonConvert.DeserializeObject<Response<string, SettingsModel>>(json.ToString());
+                Reviews = response.message;
+            }
+            catch (Exception exception)
+            {
+
+            }
+            return Reviews;
+        }
+
+
 
     }
 }

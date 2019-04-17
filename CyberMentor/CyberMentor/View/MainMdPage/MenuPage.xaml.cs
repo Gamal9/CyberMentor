@@ -17,8 +17,6 @@ namespace CyberMentor.View.MainMdPage
         public MenuPage()
         {
             InitializeComponent();
-            CrossMultilingual.Current.CurrentCultureInfo = CrossMultilingual.Current.NeutralCultureInfoList.ToList().First(element => element.EnglishName.Contains(AppSettings.LastUserGravity));
-            Resource.Culture = CrossMultilingual.Current.CurrentCultureInfo;
             //BindingContext = new MenuPageMasterViewModel();
             FlowDirection = (CyberMentor.Helper.AppSettings.LastUserGravity == "Arabic") ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
             //MasterPage.ListView.ItemSelected += ListView_ItemSelected;

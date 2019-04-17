@@ -1,9 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" NavigationPage.HasNavigationBar="False"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:CyberMentor.ViewModel"
+             xmlns:i18n="clr-namespace:CyberMentor.Helper"
              x:Class="CyberMentor.View.PolicyPage">
-
-
+    <ContentPage.BindingContext>
+        <viewmodel:SettingsViewModel/>
+    </ContentPage.BindingContext>
+    
     <Grid>
         <Grid BackgroundColor="White">
             <Grid.RowDefinitions>
@@ -22,10 +26,15 @@
                     </Image.GestureRecognizers>
                 </Image>
             </Grid>
-            <StackLayout Grid.Row="1">
-                <Label Text="Welcome to Xamarin.Forms!" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+            <Grid Grid.Row="1" IsVisible="{Binding MainVisable}">
+                <Label Text="{Binding AllSettings.policy}" VerticalOptions="CenterAndExpand" FontSize="Large" TextColor="Blue" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" />
+            </Grid>
+            <StackLayout Grid.Row="1" VerticalOptions="Start" HorizontalOptions="Center" IsVisible="{Binding VisableError}">
+                <Label FontSize="Large" Text="{Binding ErrorValue}"/>
+                <Button HorizontalOptions="Center" Clicked="Button_Clicked" Text="{i18n:Translate TryAgain}"/>
             </StackLayout>
         </Grid>
+        <ActivityIndicator IsRunning="{Binding IsRunning}" VerticalOptions="Center" HorizontalOptions="Center" Color="Blue"/>
     </Grid>
 
 

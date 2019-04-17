@@ -35,7 +35,8 @@ namespace CyberMentor
         private void TapGestureRecognizer_Tapped_5(object sender, EventArgs e)
         {
             AppSettings.LastUserGravity=(LblLanguage.Text=="عربى") ? "Arabic" :"English";
-            
+            CrossMultilingual.Current.CurrentCultureInfo = CrossMultilingual.Current.NeutralCultureInfoList.ToList().First(element => element.EnglishName.Contains(AppSettings.LastUserGravity));
+            Resource.Culture = CrossMultilingual.Current.CurrentCultureInfo;
             App.Current.MainPage = new MenuPage();
             LblLanguage.Text = (LblLanguage.Text == "عربى") ? "English" : "عربى";
         }

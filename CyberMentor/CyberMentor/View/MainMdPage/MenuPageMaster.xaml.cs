@@ -1,6 +1,7 @@
 ﻿using CyberMentor.Helper;
 using CyberMentor.Model;
 using CyberMentor.View.Popup;
+using Plugin.Multilingual;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,8 @@ namespace CyberMentor.View.MainMdPage
         public MenuPageMaster()
         {
             InitializeComponent();
+            CrossMultilingual.Current.CurrentCultureInfo = CrossMultilingual.Current.NeutralCultureInfoList.ToList().First(element => element.EnglishName.Contains(AppSettings.LastUserGravity));
+            Resource.Culture = CrossMultilingual.Current.CurrentCultureInfo;
             LblName.Text = AppSettings.UserHash;
             LblEmail.Text = AppSettings.LastUsedEmail;
             //ListView = MenuItemsListView;

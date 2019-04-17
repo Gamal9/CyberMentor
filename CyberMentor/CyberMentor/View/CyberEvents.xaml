@@ -61,7 +61,7 @@
 				Factor=1,
 				Constant=-10}">
                                     <Grid>
-                                        <Image Source="{Binding logo, StringFormat='https://cyber.alsalil.net/public/assets/imgs/{0:N}'}" Aspect="AspectFill"/>
+                                        <Image Source="{Binding img, StringFormat='https://cyber.alsalil.net/public/assets/imgs/{0:N}'}" Aspect="AspectFill"/>
                                         <Grid Padding="10" VerticalOptions="Center" HorizontalOptions="Center">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="*"/>
