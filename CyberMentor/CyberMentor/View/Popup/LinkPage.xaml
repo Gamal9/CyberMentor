@@ -13,15 +13,15 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
-                <Image HorizontalOptions="End" x:Name="BackImg" Grid.Row="0" Margin="5" Source="leftarrow.png">
+                <Label Grid.Column="0" HorizontalOptions="Fill" Margin="5,0" VerticalOptions="Center" MaxLines="1" FontSize="Large" x:Name="LblLink"/>
+                <Image HorizontalOptions="End" x:Name="BackImg" Grid.Column="1" Margin="5" Source="leftarrow.png">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                     </Image.GestureRecognizers>
                 </Image>
-                <Label Grid.Column="1" HorizontalOptions="Fill" Margin="5,0" VerticalOptions="Center" MaxLines="1" FontSize="Large" x:Name="LblLink"/>
             </Grid>
             <local:CustomWebView Grid.Row="1" x:Name="webView" VerticalOptions="Fill" HorizontalOptions="Fill" />
         </Grid>

@@ -80,7 +80,7 @@ namespace CyberMentor.ViewModel
                 VisableError = true;
                 ErrorValue = Resource.ErrorMessage;
             }
-            
+            IsRunning = false;
         }
 
         public ICommand RefreshCommand

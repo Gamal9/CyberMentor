@@ -17,9 +17,10 @@ namespace CyberMentor.View
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class CyberTube : ContentPage
 	{
-		public CyberTube ()
+		public CyberTube ( string title)
 		{
 			InitializeComponent ();
+            LblTitle.Text = title;
             BackImg.Rotation = (AppSettings.LastUserGravity == "English") ? 180 : 0;
         }
 

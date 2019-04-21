@@ -77,16 +77,17 @@ namespace CyberMentor.View.MainMdPage
         private void StkItems_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var item = e.SelectedItem as CatModel;
+            var title = (AppSettings.LastUserGravity == "Arabic") ? item.ar_name : item.en_name;
             switch (item.id)
             {
                 case 4:
-                    (App.Current.MainPage as MasterDetailPage).Detail.Navigation.PushAsync(new CyberTube());
+                    (App.Current.MainPage as MasterDetailPage).Detail.Navigation.PushAsync(new CyberTube(title));
                     break;
                 case 3:
-                    (App.Current.MainPage as MasterDetailPage).Detail.Navigation.PushAsync(new CyberEvents());
+                    (App.Current.MainPage as MasterDetailPage).Detail.Navigation.PushAsync(new CyberEvents(title));
                     break;
                 case 2:
-                    (App.Current.MainPage as MasterDetailPage).Detail.Navigation.PushAsync(new CyberMentor.View.CyberNews());
+                    (App.Current.MainPage as MasterDetailPage).Detail.Navigation.PushAsync(new CyberMentor.View.CyberNews(title));
                     break;
                 case 1:
                     (App.Current.MainPage as MasterDetailPage).Detail.Navigation.PushAsync(new SubCategories(item.sub_categories));

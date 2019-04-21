@@ -45,16 +45,17 @@ namespace CyberMentor
         private void FlowListView_FlowItemTapped(object sender, ItemTappedEventArgs e)
         {
             var item = e.Item as CatModel;
+            var title = (AppSettings.LastUserGravity == "Arabic") ? item.ar_name : item.en_name;
             switch (item.id)
             {
                 case 4:
-                    Navigation.PushAsync(new CyberTube());
+                    Navigation.PushAsync(new CyberTube(title));
                     break;
                 case 3:
-                    Navigation.PushAsync(new CyberEvents());
+                    Navigation.PushAsync(new CyberEvents(title));
                     break;
                 case 2:
-                    Navigation.PushAsync(new CyberMentor.View.CyberNews());
+                    Navigation.PushAsync(new CyberMentor.View.CyberNews(title));
                     break;
                 case 1:
                     Navigation.PushAsync(new SubCategories(item.sub_categories));

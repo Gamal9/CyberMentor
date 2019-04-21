@@ -10,8 +10,6 @@
     <ContentPage.BindingContext>
         <viewmodel:EventsViewModel/>
     </ContentPage.BindingContext>
-
-
     <Grid>
         <Grid BackgroundColor="White">
             <Grid.RowDefinitions>
@@ -29,6 +27,7 @@
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                     </Image.GestureRecognizers>
                 </Image>
+                <Label x:Name="LblTitle" Grid.Column="1" HorizontalTextAlignment="Center" Margin="3" HorizontalOptions="Fill" TextColor="DarkBlue" FontSize="25"/>
                 <Image Grid.Column="2" Source="leftarrow.png" x:Name="BackImg" VerticalOptions="Center" HorizontalOptions="Start">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>

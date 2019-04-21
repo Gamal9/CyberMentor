@@ -16,9 +16,10 @@ namespace CyberMentor.View
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class CyberNews : ContentPage
 	{
-		public CyberNews ()
+		public CyberNews (string title)
 		{
 			InitializeComponent ();
+            LblTitle.Text = title;
             BackImg.Rotation = (AppSettings.LastUserGravity == "English") ? 180 : 0;
 		}
 

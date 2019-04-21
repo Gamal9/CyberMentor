@@ -27,33 +27,33 @@
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                     </Image.GestureRecognizers>
                 </Image>
+                <Label x:Name="LblTitle" Grid.Column="1" HorizontalTextAlignment="Center" Margin="3" HorizontalOptions="Fill" TextColor="DarkBlue" FontSize="25"/>
                 <Image Grid.Column="2" Source="leftarrow.png" x:Name="BackImg" VerticalOptions="Center" HorizontalOptions="Start">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
                     </Image.GestureRecognizers>
                 </Image>
             </Grid>
-            <StackLayout Padding="5,10" Grid.Row="1" BackgroundColor="White">
-                <Label Text="Cyber Tube" TextColor="Black" FontSize="22"/>
+            <StackLayout Padding="0,10" Grid.Row="1" BackgroundColor="White">
                 <controls:FlowListView FlowColumnCount="1" RefreshCommand="{Binding RefreshCommand}" IsPullToRefreshEnabled="True" IsRefreshing="{Binding IsRunning}" FlowItemsSource="{Binding AllTubes}" FlowItemTapped="FlowListView_FlowItemTapped" HasUnevenRows="True" SelectionMode="None">
                     <controls:FlowListView.FlowColumnTemplate>
                         <DataTemplate>
-                            <StackLayout Orientation="Vertical" Padding="10,10,10,20">
+                            <StackLayout Orientation="Vertical">
                                 <Label Text="{Binding Youtube.ChannelTitle}" TextColor="Maroon" FontSize="22"/>
-                                <Label Text="{Binding Youtube.Title}" TextColor="Black" FontSize="16"/>
                                 <Image Source="{Binding Youtube.HighThumbnailUrl}" HeightRequest="200"/>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding Youtube.ViewCount, StringFormat=$'{0} views'}" TextColor="#0D47A1" FontSize="14"/>
-                                    <Label Text="{Binding Youtube.LikeCount, StringFormat=$'{0:N} likes'}" TextColor="#2196F3" FontSize="14"/>
-                                    <Label Text="{Binding Youtube.DislikeCount, StringFormat=$'{0:N} dislikes'}" TextColor="#0D47A1" FontSize="14"/>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal" TranslationY="-7">
-                                    <Label Text="{Binding Youtube.FavoriteCount, StringFormat=$'{0:N} favorites'}" TextColor="#2196F3" FontSize="14"/>
-                                    <Label Text="{Binding Youtube.CommentCount, StringFormat=$'{0:N} comments'}" TextColor="#0D47A1" FontSize="14"/>
-                                </StackLayout>
-                                <Label Text="{Binding Youtube.Description,StringFormat=$'{0:N}.....إلخ'}" MaxLines="3" TextColor="Gray" FontSize="14"/>
+                                <Grid HorizontalOptions="Fill">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Text="{Binding Youtube.ViewCount, StringFormat='[{0} views]'}" TextColor="#0D47A1" FontSize="14"/>
+                                    <Label Grid.Column="1" Text="{Binding Youtube.LikeCount, StringFormat='[{0:N} likes]'}" TextColor="#2196F3" FontSize="14"/>
+                                    <Label Grid.Column="2" Text="{Binding Youtube.DislikeCount, StringFormat='[{0:N} dislikes]'}" TextColor="#0D47A1" FontSize="14"/>
+                                </Grid>
+                                <Label Text="{Binding Youtube.Title}" TextColor="Black" FontSize="16"/>
+                                <Label Text="{Binding Youtube.Description,StringFormat='{0:N}.....إلخ'}" MaxLines="3" TextColor="Gray" FontSize="14"/>
                             </StackLayout>
-
                         </DataTemplate>
                     </controls:FlowListView.FlowColumnTemplate>
                 </controls:FlowListView>
