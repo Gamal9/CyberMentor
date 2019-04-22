@@ -2,6 +2,7 @@
 using CyberMentor.Model;
 using CyberMentor.View.Popup;
 using CyberMentor.ViewModel;
+using Plugin.Share;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -27,8 +28,10 @@ namespace CyberMentor.View
         private void FlowListView_FlowItemTapped(object sender, ItemTappedEventArgs e)
         {
             var item = e.Item as CyberMentor.Model.CyberModel;
-            string src = "https://www.youtube.com/watch?v=" + item.key;
-            Navigation.PushAsync(new LinkPage(src));
+            //string src = "https://www.youtube.com/watch?v=" + item.key;
+            string src = "https://www.youtube.com/embed/" + item.key;
+            //CrossShare.Current.OpenBrowser(src);
+            Navigation.PushAsync(new TubeLink(item.Youtube,src));
         }
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)

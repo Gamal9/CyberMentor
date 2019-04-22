@@ -1,6 +1,7 @@
 ﻿using CyberMentor.Helper;
 using CyberMentor.Model;
 using CyberMentor.Service;
+using GalaSoft.MvvmLight.Command;
 using Plugin.Connectivity;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace CyberMentor.ViewModel
@@ -78,8 +80,16 @@ namespace CyberMentor.ViewModel
                 VisableError = true;
                 ErrorValue = Resource.ErrorMessage;
             }
+            IsRunning = false;
         }
 
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                return new RelayCommand(DataGetter);
+            }
+        }
 
 
         public event PropertyChangedEventHandler PropertyChanged;

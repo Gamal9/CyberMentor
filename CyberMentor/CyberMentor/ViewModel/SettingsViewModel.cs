@@ -64,8 +64,8 @@ namespace CyberMentor.ViewModel
                 VisableError = true;
                 ErrorValue = Resource.ErrorMessage;
             }
+            IsRunning = false;
 
-            
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

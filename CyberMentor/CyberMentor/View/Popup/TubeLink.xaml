@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:CyberMentor.Helper"
+             xmlns:local="clr-namespace:CyberMentor.Model" NavigationPage.HasNavigationBar="False"
+             x:Class="CyberMentor.View.Popup.TubeLink">
+
+    <Grid>
+        <Grid BackgroundColor="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="12*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="LblTitle" Text="{i18n:Translate Description}" Grid.Column="1" HorizontalTextAlignment="Center" Margin="3" HorizontalOptions="Fill" TextColor="DarkBlue" FontSize="25"/>
+                <Image Grid.Column="2" Source="leftarrow.png" x:Name="BackImg" VerticalOptions="Center" HorizontalOptions="Start">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+            <ScrollView Grid.Row="1">
+                <StackLayout>
+                    <Label Text="{Binding Title}" TextColor="Maroon" FontSize="Large"/>
+                    <local:CustomWebView x:Name="WebKey" HeightRequest="300" HorizontalOptions="Fill"/>
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="{Binding ViewCount, StringFormat='[{0} views]'}" HorizontalOptions="Center" TextColor="#0D47A1" FontSize="14"/>
+                        <Label Grid.Column="1" Text="{Binding LikeCount, StringFormat='[{0:N} likes]'}" HorizontalOptions="Center" TextColor="#2196F3" FontSize="14"/>
+                        <Label Grid.Column="2" Text="{Binding DislikeCount, StringFormat='[{0:N} dislikes]'}" HorizontalOptions="Center" TextColor="#0D47A1" FontSize="14"/>
+                    </Grid>
+                    <Label Margin="10" Text="{Binding Description}" TextColor="Gray" FontSize="Micro"/>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </Grid>
+</ContentPage>

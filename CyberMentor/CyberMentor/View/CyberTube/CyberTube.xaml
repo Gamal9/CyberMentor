@@ -39,7 +39,7 @@
                     <controls:FlowListView.FlowColumnTemplate>
                         <DataTemplate>
                             <StackLayout Orientation="Vertical">
-                                <Label Text="{Binding Youtube.ChannelTitle}" TextColor="Maroon" FontSize="22"/>
+                                <Label Text="{Binding Youtube.Title}" TextColor="Maroon" FontSize="22"/>
                                 <Image Source="{Binding Youtube.HighThumbnailUrl}" HeightRequest="200"/>
                                 <Grid HorizontalOptions="Fill">
                                     <Grid.ColumnDefinitions>

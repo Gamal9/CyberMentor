@@ -145,22 +145,15 @@ namespace CyberMentor.ViewModel
 
                 youtubeItem.Title = snippet.Value<string>("title");
                 youtubeItem.Description = snippet.Value<string>("description");
-                youtubeItem.ChannelTitle = snippet.Value<string>("channelTitle");
-                youtubeItem.PublishedAt = snippet.Value<DateTime>("publishedAt");
                 youtubeItem.VideoId = items[0]?.Value<string>("id");
                 youtubeItem.DefaultThumbnailUrl = snippet?.Value<JObject>("thumbnails")?.Value<JObject>("default")?.Value<string>("url");
                 youtubeItem.MediumThumbnailUrl = snippet?.Value<JObject>("thumbnails")?.Value<JObject>("medium")?.Value<string>("url");
                 youtubeItem.HighThumbnailUrl = snippet?.Value<JObject>("thumbnails")?.Value<JObject>("high")?.Value<string>("url");
-                youtubeItem.StandardThumbnailUrl = snippet?.Value<JObject>("thumbnails")?.Value<JObject>("standard")?.Value<string>("url");
-                youtubeItem.MaxResThumbnailUrl = snippet?.Value<JObject>("thumbnails")?.Value<JObject>("maxres")?.Value<string>("url");
                 youtubeItem.ViewCount = statistics?.Value<int>("viewCount");
                 youtubeItem.LikeCount = statistics?.Value<int>("likeCount");
                 youtubeItem.DislikeCount = statistics?.Value<int>("dislikeCount");
                 youtubeItem.FavoriteCount = statistics?.Value<int>("favoriteCount");
-                youtubeItem.CommentCount = statistics?.Value<int>("commentCount");
                 
-                youtubeItem.Title = snippet.Value<string>("title");
-
                 return youtubeItem;
             }
             catch (Exception exception)

@@ -1,32 +1,33 @@
-﻿using Rg.Plugins.Popup.Pages;
-using Rg.Plugins.Popup.Services;
+﻿using CyberMentor.Helper;
+using CyberMentor.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CyberMentor.Helper;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using CyberMentor.Model;
 
 namespace CyberMentor.View.Popup
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class LinkPage : ContentPage
-    {
-		public LinkPage (string src)
+	public partial class TubeLink : ContentPage
+	{
+		public TubeLink (YoutubeItem item, string src)
 		{
 			InitializeComponent ();
             FlowDirection = (AppSettings.LastUserGravity == "English") ? FlowDirection.LeftToRight : FlowDirection.RightToLeft;
             BackImg.Rotation = (AppSettings.LastUserGravity == "English") ? 180 : 0;
-            LblLink.Text = src;
-            webView.Source = src;
-        }
+            WebKey.Source = src;
+            this.BindingContext = item;
+		}
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             Navigation.PopAsync();
         }
+
+        
     }
 }
